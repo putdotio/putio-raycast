@@ -3,7 +3,7 @@
   "name": "put-io",
   "title": "put.io",
   "description": "Raycast extension for managing files, transfers, and history events in your put.io account.",
-  "icon": "command-icon.png",
+  "icon": "putio.png",
   "author": "altaywtf",
   "owner": "putio",
   "categories": [
@@ -12,10 +12,26 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "index",
-      "title": "Search in put.io",
-      "description": "",
+      "name": "files",
+      "title": "Your Files",
+      "description": "View your files in put.io",
       "mode": "view"
+    },
+    {
+      "name": "search",
+      "title": "Search in put.io",
+      "description": "Search among your files in put.io",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "token",
+      "title": "App-specific password",
+      "type": "password",
+      "placeholder": "Get this from put.io/raycast",
+      "description": "App-specific password used for authenticating with put.io API.",
+      "required": true
     }
   ],
   "dependencies": {

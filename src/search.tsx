@@ -1,5 +1,5 @@
 import { ActionPanel, Action, List } from "@raycast/api";
-import { useFetch, Response } from "@raycast/utils";
+import { useFetch } from "@raycast/utils";
 import { useState } from "react";
 import { URLSearchParams } from "node:url";
 
