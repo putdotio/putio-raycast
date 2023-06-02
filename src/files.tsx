@@ -1,27 +1,56 @@
-import { List } from "@raycast/api";
+import { useEffect } from "react";
+import { List, showToast, Toast, Detail } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
-import { useState } from "react";
-import { withPutioClient, getPutioClient } from "./core/withPutioClient";
 import { IFile } from "@putdotio/api-client";
+import { FileListItem } from "./components/FileListItem";
+import { withPutioClient, getPutioClient } from "./core/withPutioClient";
 
 const fetchFiles = async (id: number) => {
-  const response = await getPutioClient().Files.Query(id);
-  return response.data.files as IFile[];
+  const response = await getPutioClient().Files.Query(id, {
+    streamUrl: true,
+    mp4StreamUrl: true,
+  });
+
+  return {
+    parent: response.data.parent,
+    files: response.data.files,
+  } as {
+    parent: IFile;
+    files: IFile[];
+  };
 };
 
-const Files = () => {
-  const [fileId, setFileId] = useState<number>(0);
-  const { isLoading, data, mutate } = usePromise(fetchFiles, [fileId]);
+export const Files = ({ id }: { id: IFile["id"] }) => {
+  const { isLoading, data, error } = usePromise(fetchFiles, [id]);
 
-  return (
-    <List isLoading={isLoading}>
-      {data?.map((file) => (
-        <List.Item key={file.id} title={file.name} />
-      ))}
-    </List>
-  );
+  useEffect(() => {
+    if (error) {
+      showToast({
+        style: Toast.Style.Failure,
+        title: "Something went wrong",
+      });
+    }
+  }, [error]);
+
+  if (!data) {
+    return <List isLoading={isLoading} />;
+  }
+
+  switch (data.parent.file_type) {
+    case "FOLDER":
+      return (
+        <List isShowingDetail>
+          {data.files.map((file) => (
+            <FileListItem key={file.id} file={file} />
+          ))}
+        </List>
+      );
+
+    default:
+      return <Detail markdown={`# ${data.parent.name}`} />;
+  }
 };
 
 export default function Command() {
-  return withPutioClient(<Files />);
+  return withPutioClient(<Files id={0} />);
 }
