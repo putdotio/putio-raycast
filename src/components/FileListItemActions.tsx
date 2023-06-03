@@ -22,7 +22,7 @@ const fetchFileURLs = async (file: IFile) => {
 
   return {
     download,
-    browse: `https://put.io/files/${file.id}`,
+    browser: `https://put.io/files/${file.id}`,
     stream: file.stream_url,
     mp4Stream: file.mp4_stream_url,
   };
@@ -37,13 +37,15 @@ export const FileListItemActions = ({ file }: { file: IFile }) => {
         <Action.Push title="Open" target={<Files id={file.id} name={file.name} />} icon={Icon.ArrowRight} />
       ) : null}
 
-      {urls?.browse && <Action.OpenInBrowser url={urls.browse} />}
+      {urls?.browser && <Action.OpenInBrowser title="Open in put.io" url={urls.browser} icon="putio.png" />}
+      {urls?.download && <Action.OpenInBrowser title="Download in put.io" url={urls.download} icon="putio.png" />}
 
-      {urls?.download && <Action.OpenInBrowser title="Download in Browser" url={urls.download} icon={Icon.Download} />}
-      {urls?.download && <Action.CopyToClipboard title="Copy Download URL" content={urls.download} />}
-
-      {urls?.stream && <Action.CopyToClipboard title="Copy Stream URL" content={urls.stream} />}
-      {urls?.mp4Stream && <Action.CopyToClipboard title="Copy MP4 Stream URL" content={urls.mp4Stream} />}
+      <ActionPanel.Section title="URLs">
+        {urls?.browser && <Action.CopyToClipboard title="Copy URL" content={urls.browser} />}
+        {urls?.download && <Action.CopyToClipboard title="Copy Download URL" content={urls.download} />}
+        {urls?.stream && <Action.CopyToClipboard title="Copy Stream URL" content={urls.stream} />}
+        {urls?.mp4Stream && <Action.CopyToClipboard title="Copy MP4 Stream URL" content={urls.mp4Stream} />}
+      </ActionPanel.Section>
     </ActionPanel>
   );
 };

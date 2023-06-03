@@ -1,10 +1,10 @@
 import { getPreferenceValues } from "@raycast/api";
 import { Detail, environment, MenuBarExtra } from "@raycast/api";
 import { useState, useMemo } from "react";
-import PutioAPI from "@putdotio/api-client";
+import PutioAPI, { IAccountInfo } from "@putdotio/api-client";
 
-let putioClient: null | PutioAPI = null;
-let authenticated = false;
+let putioClient: PutioAPI | null = null;
+let accountInfo: IAccountInfo | null = null;
 
 export const withPutioClient = (component: JSX.Element) => {
   const [x, forceRerender] = useState(0);
@@ -13,14 +13,16 @@ export const withPutioClient = (component: JSX.Element) => {
     (async function () {
       const { token } = getPreferenceValues<Preferences>();
       putioClient = new PutioAPI({ clientID: 6311 });
-      await putioClient.Auth.ValidateToken(token);
       putioClient.setToken(token);
-      authenticated = true;
+
+      const accountInfoResponse = await putioClient.Account.Info();
+      accountInfo = accountInfoResponse.data.info;
+
       forceRerender(x + 1);
     })();
   }, []);
 
-  if (!authenticated) {
+  if (!accountInfo) {
     if (environment.commandMode === "view") {
       return <Detail isLoading />;
     } else if (environment.commandMode === "menu-bar") {
@@ -34,9 +36,17 @@ export const withPutioClient = (component: JSX.Element) => {
 };
 
 export const getPutioClient = () => {
-  if (!authenticated || !putioClient) {
+  if (!accountInfo || !putioClient) {
     throw new Error("getPutioClient must be used when authenticated");
   }
 
   return putioClient;
+};
+
+export const getPutioAccountInfo = () => {
+  if (!accountInfo || !putioClient) {
+    throw new Error("getPutioAccountInfo must be used when authenticated");
+  }
+
+  return accountInfo;
 };

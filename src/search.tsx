@@ -24,7 +24,7 @@ const Search = () => {
     >
       <List.Section title="Results" subtitle={data?.total.toString()}>
         {data?.files.map((file) => (
-          <FileListItem file={file} />
+          <FileListItem key={file.id} file={file} />
         ))}
       </List.Section>
     </List>
