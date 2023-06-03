@@ -1,8 +1,10 @@
-import { ActionPanel, Action, Icon } from "@raycast/api";
+import { ActionPanel, Action, Icon, confirmAlert, showToast, Toast, Alert } from "@raycast/api";
 import { useCachedPromise } from "@raycast/utils";
-import { IFile } from "@putdotio/api-client";
-import { Files } from "../files";
+import type { IFile } from "@putdotio/api-client";
 import { getPutioAccountInfo, getPutioClient } from "../api/withPutioClient";
+import { Files } from "../files";
+import { RenameFile } from "../rename-file";
+import { deleteFile } from "../api/files";
 
 const fetchFileDownloadURL = async (file: IFile) => {
   switch (file.file_type) {
@@ -62,20 +64,61 @@ export const FileListItemNavigationActions = ({ file }: { file: IFile }) => {
   );
 };
 
-export const FileListItemMutationActions = ({ file }: { file: IFile }) => {
-  const accountInfo = getPutioAccountInfo();
+export const FileListItemMutationActions = ({ file, onMutate }: { file: IFile; onMutate: () => void }) => {
+  const trashEnabled = getPutioAccountInfo().settings.trash_enabled;
 
   return (
     <>
       {file.is_shared ? null : (
         <ActionPanel.Section>
-          <Action title="Rename" icon={Icon.Pencil} shortcut={{ modifiers: ["cmd"], key: "r" }} />
+          <Action.Push
+            title="Rename"
+            icon={Icon.Pencil}
+            shortcut={{ modifiers: ["cmd"], key: "r" }}
+            target={<RenameFile file={file} onSuccess={onMutate} />}
+          />
 
           <Action
-            title={accountInfo.settings.trash_enabled ? "Send to Trash" : "Delete"}
-            icon={accountInfo.settings.trash_enabled ? Icon.Trash : Icon.DeleteDocument}
+            title={trashEnabled ? "Send to Trash" : "Delete"}
+            icon={trashEnabled ? Icon.Trash : Icon.DeleteDocument}
             style={Action.Style.Destructive}
             shortcut={{ modifiers: ["cmd"], key: "backspace" }}
+            onAction={async () => {
+              const run = async () => {
+                const toast = await showToast({
+                  style: Toast.Style.Animated,
+                  title: trashEnabled ? "Sending to trash..." : "Deleting file...",
+                });
+
+                try {
+                  await deleteFile(file.id);
+                  toast.style = Toast.Style.Success;
+                  toast.title = "Aaand it's gone!";
+                  onMutate();
+                } catch (error) {
+                  toast.style = Toast.Style.Failure;
+                  toast.title = "Failed to delete file";
+                }
+              };
+
+              if (trashEnabled) {
+                return run();
+              }
+
+              await confirmAlert({
+                icon: Icon.DeleteDocument,
+                title: `Are you sure you want to delete ${file.name}?`,
+                primaryAction: {
+                  title: "Delete",
+                  style: Alert.ActionStyle.Destructive,
+                  onAction: run,
+                },
+                dismissAction: {
+                  title: "Cancel",
+                  style: Alert.ActionStyle.Cancel,
+                },
+              });
+            }}
           />
         </ActionPanel.Section>
       )}

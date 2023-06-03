@@ -22,7 +22,7 @@ const getIcon = (file: IFile) => {
   }
 };
 
-export const FileListItem = ({ file }: { file: IFile }) => (
+export const FileListItem = ({ file, onMutate }: { file: IFile; onMutate: () => void }) => (
   <List.Item
     id={file.id.toString()}
     title={file.name}
@@ -30,7 +30,7 @@ export const FileListItem = ({ file }: { file: IFile }) => (
     actions={
       <ActionPanel title={file.name}>
         <FileListItemNavigationActions file={file} />
-        <FileListItemMutationActions file={file} />
+        <FileListItemMutationActions file={file} onMutate={onMutate} />
       </ActionPanel>
     }
     accessories={[

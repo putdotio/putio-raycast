@@ -20,3 +20,13 @@ export const searchFiles = async (keyword: string) => {
   const response = await getPutioClient().Files.Search(keyword);
   return response.data;
 };
+
+export const renameFile = async (id: number, name: string) => {
+  const response = await getPutioClient().File.Rename(id, name);
+  return response.data;
+};
+
+export const deleteFile = async (id: number) => {
+  const response = await getPutioClient().Files.Delete([id]);
+  return response.data;
+};

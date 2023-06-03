@@ -7,7 +7,7 @@ import { fetchFiles } from "./api/files";
 import { FileListItem } from "./components/FileListItem";
 
 export const Files = ({ id = 0, name = "Your Files" }: { id?: IFile["id"]; name?: IFile["name"] }) => {
-  const { isLoading, data, error } = usePromise(fetchFiles, [id]);
+  const { isLoading, data, error, revalidate } = usePromise(fetchFiles, [id]);
 
   useEffect(() => {
     if (error) {
@@ -27,7 +27,7 @@ export const Files = ({ id = 0, name = "Your Files" }: { id?: IFile["id"]; name?
       return (
         <List navigationTitle={name} searchBarPlaceholder={`Search in ${name}`}>
           {data.files.map((file) => (
-            <FileListItem key={file.id} file={file} />
+            <FileListItem key={file.id} file={file} onMutate={revalidate} />
           ))}
         </List>
       );
