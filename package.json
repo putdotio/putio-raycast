@@ -15,13 +15,33 @@
       "name": "files",
       "title": "Your Files",
       "description": "View your files in put.io",
-      "mode": "view"
+      "mode": "view",
+      "keywords": [
+        "putio",
+        "files"
+      ]
     },
     {
-      "name": "search",
+      "name": "search-files",
       "title": "Search in put.io",
       "description": "Search among your files in put.io",
-      "mode": "view"
+      "mode": "view",
+      "keywords": [
+        "putio",
+        "files",
+        "search"
+      ]
+    },
+    {
+      "name": "new-transfer",
+      "title": "New transfer",
+      "description": "Add new transfer to put.io",
+      "mode": "view",
+      "keywords": [
+        "putio",
+        "transfer",
+        "new"
+      ]
     }
   ],
   "preferences": [

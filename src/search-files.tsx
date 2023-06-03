@@ -9,7 +9,7 @@ const searchFiles = async (keyword: string) => {
   return response.data;
 };
 
-const Search = () => {
+const SearchFiles = () => {
   const [searchText, setSearchText] = useState("");
   const { isLoading, data } = usePromise(searchFiles, [searchText], {
     execute: searchText !== "",
@@ -32,5 +32,5 @@ const Search = () => {
 };
 
 export default function Command() {
-  return withPutioClient(<Search />);
+  return withPutioClient(<SearchFiles />);
 }
