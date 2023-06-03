@@ -7,15 +7,19 @@ import { RenameFile } from "../rename-file";
 import { deleteFile } from "../api/files";
 
 const fetchFileDownloadURL = async (file: IFile) => {
-  switch (file.file_type) {
-    case "IMAGE":
-    case "VIDEO": {
-      const response = await getPutioClient().get(`/files/${file.id}/url`);
-      return response.data.url as string;
-    }
+  try {
+    switch (file.file_type) {
+      case "IMAGE":
+      case "VIDEO": {
+        const response = await getPutioClient().get(`/files/${file.id}/url`);
+        return response.data.url as string;
+      }
 
-    default:
-      return null;
+      default:
+        return null;
+    }
+  } catch (error) {
+    return null;
   }
 };
 
