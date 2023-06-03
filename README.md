@@ -9,9 +9,9 @@
 </p>
 
 <p align="center">
-  <img src="./metadata/put-io-1.png" width="33%">
-  <img src="./metadata/put-io-3.png" width="33%">
-  <img src="./metadata/put-io-5.png" width="33%">
+  <img src="./metadata/put-io-1.png" width="30%">
+  <img src="./metadata/put-io-3.png" width="30%">
+  <img src="./metadata/put-io-5.png" width="30%">
 </p>
 
 <p align="center">
