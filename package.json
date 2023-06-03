@@ -30,6 +30,14 @@
         "putio",
         "files",
         "search"
+      ],
+      "arguments": [
+        {
+          "name": "query",
+          "required": false,
+          "type": "text",
+          "placeholder": "big buck bunny"
+        }
       ]
     },
     {
@@ -41,6 +49,14 @@
         "putio",
         "transfer",
         "new"
+      ],
+      "arguments": [
+        {
+          "name": "links",
+          "required": false,
+          "type": "text",
+          "placeholder": "magnet:?xt=urn:btih..."
+        }
       ]
     },
     {

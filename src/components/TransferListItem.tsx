@@ -1,21 +1,16 @@
-import { ActionPanel, Color, Icon, List, Action } from "@raycast/api";
-import { getProgressIcon } from "@raycast/utils";
-import type { Transfer } from "@putdotio/api-client";
+import { ActionPanel, Color, Icon, List } from "@raycast/api";
+import { getProgressIcon, useCachedPromise } from "@raycast/utils";
+import type { IFile, Transfer } from "@putdotio/api-client";
 import { filesize } from "filesize";
+import { FileListItemNavigationActions } from "./FileListItemActions";
+import { fetchFiles } from "../api/files";
 
-type Props = {
-  transfer: Transfer;
+const TransferListItemFileActions = ({ fileId }: { fileId: IFile["id"] }) => {
+  const { data: fileData } = useCachedPromise(fetchFiles, [fileId]);
+  return fileData ? <FileListItemNavigationActions file={fileData.parent} /> : null;
 };
 
-const TransferListItemActions = ({ transfer }: Props) => (
-  <ActionPanel title={transfer.name}>
-    {transfer.file_id ? (
-      <Action.OpenInBrowser icon="putio.png" url={`https://put.io/files/${transfer.file_id}`} />
-    ) : null}
-  </ActionPanel>
-);
-
-export const TransferListItem = ({ transfer }: Props) => (
+export const TransferListItem = ({ transfer }: { transfer: Transfer }) => (
   <List.Item
     key={transfer.id}
     title={transfer.name}
@@ -29,6 +24,10 @@ export const TransferListItem = ({ transfer }: Props) => (
       },
     ]}
     icon={getProgressIcon(transfer.percent_done / 100, Color.Green)}
-    actions={<TransferListItemActions transfer={transfer} />}
+    actions={
+      <ActionPanel title={transfer.name}>
+        {transfer.file_id && <TransferListItemFileActions fileId={transfer.file_id} />}
+      </ActionPanel>
+    }
   />
 );

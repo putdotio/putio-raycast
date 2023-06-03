@@ -28,12 +28,11 @@ const fetchFileURLs = async (file: IFile) => {
   };
 };
 
-export const FileListItemActions = ({ file }: { file: IFile }) => {
+export const FileListItemNavigationActions = ({ file }: { file: IFile }) => {
   const { data: urls } = useCachedPromise(fetchFileURLs, [file]);
-  const accountInfo = getPutioAccountInfo();
 
   return (
-    <ActionPanel title={file.name}>
+    <>
       {file.file_type === "FOLDER" ? (
         <Action.Push title="Open" target={<Files id={file.id} name={file.name} />} icon={Icon.ArrowRight} />
       ) : null}
@@ -47,7 +46,15 @@ export const FileListItemActions = ({ file }: { file: IFile }) => {
         {urls?.stream && <Action.CopyToClipboard title="Copy Stream URL" content={urls.stream} />}
         {urls?.mp4Stream && <Action.CopyToClipboard title="Copy MP4 Stream URL" content={urls.mp4Stream} />}
       </ActionPanel.Section>
+    </>
+  );
+};
 
+export const FileListItemMutationActions = ({ file }: { file: IFile }) => {
+  const accountInfo = getPutioAccountInfo();
+
+  return (
+    <>
       {file.is_shared ? null : (
         <ActionPanel.Section title="WIP">
           <Action title="Rename" icon={Icon.Pencil} />
@@ -59,6 +66,6 @@ export const FileListItemActions = ({ file }: { file: IFile }) => {
           />
         </ActionPanel.Section>
       )}
-    </ActionPanel>
+    </>
   );
 };

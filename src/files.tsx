@@ -33,7 +33,7 @@ export const Files = ({ id = 0, name = "Your Files" }: { id?: IFile["id"]; name?
       );
 
     default:
-      return <Detail markdown={`# ${data.parent.name}`} />;
+      return <Detail markdown={data.parent.name} />;
   }
 };
 

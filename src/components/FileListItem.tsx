@@ -1,7 +1,7 @@
-import { List, Icon } from "@raycast/api";
+import { List, Icon, ActionPanel } from "@raycast/api";
 import type { IFile } from "@putdotio/api-client";
 import { filesize } from "filesize";
-import { FileListItemActions } from "./FileListItemActions";
+import { FileListItemNavigationActions, FileListItemMutationActions } from "./FileListItemActions";
 
 const getIcon = (file: IFile) => {
   switch (file.file_type) {
@@ -27,7 +27,12 @@ export const FileListItem = ({ file }: { file: IFile }) => (
     id={file.id.toString()}
     title={file.name}
     icon={getIcon(file)}
-    actions={<FileListItemActions file={file} />}
+    actions={
+      <ActionPanel title={file.name}>
+        <FileListItemNavigationActions file={file} />
+        <FileListItemMutationActions file={file} />
+      </ActionPanel>
+    }
     accessories={[
       {
         text: filesize(file.size).toString(),
