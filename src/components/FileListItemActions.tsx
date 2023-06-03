@@ -2,7 +2,7 @@ import { ActionPanel, Action, Icon } from "@raycast/api";
 import { useCachedPromise } from "@raycast/utils";
 import { IFile } from "@putdotio/api-client";
 import { Files } from "../files";
-import { getPutioClient } from "../core/withPutioClient";
+import { getPutioAccountInfo, getPutioClient } from "../core/withPutioClient";
 
 const fetchFileDownloadURL = async (file: IFile) => {
   switch (file.file_type) {
@@ -30,6 +30,7 @@ const fetchFileURLs = async (file: IFile) => {
 
 export const FileListItemActions = ({ file }: { file: IFile }) => {
   const { data: urls } = useCachedPromise(fetchFileURLs, [file]);
+  const accountInfo = getPutioAccountInfo();
 
   return (
     <ActionPanel title={file.name}>
@@ -40,12 +41,24 @@ export const FileListItemActions = ({ file }: { file: IFile }) => {
       {urls?.browser && <Action.OpenInBrowser title="Open in put.io" url={urls.browser} icon="putio.png" />}
       {urls?.download && <Action.OpenInBrowser title="Download in put.io" url={urls.download} icon="putio.png" />}
 
-      <ActionPanel.Section title="URLs">
+      <ActionPanel.Section>
         {urls?.browser && <Action.CopyToClipboard title="Copy URL" content={urls.browser} />}
         {urls?.download && <Action.CopyToClipboard title="Copy Download URL" content={urls.download} />}
         {urls?.stream && <Action.CopyToClipboard title="Copy Stream URL" content={urls.stream} />}
         {urls?.mp4Stream && <Action.CopyToClipboard title="Copy MP4 Stream URL" content={urls.mp4Stream} />}
       </ActionPanel.Section>
+
+      {file.is_shared ? null : (
+        <ActionPanel.Section title="WIP">
+          <Action title="Rename" icon={Icon.Pencil} />
+
+          <Action
+            title={accountInfo.settings.trash_enabled ? "Send to Trash" : "Delete"}
+            icon={accountInfo.settings.trash_enabled ? Icon.Trash : Icon.DeleteDocument}
+            style={Action.Style.Destructive}
+          />
+        </ActionPanel.Section>
+      )}
     </ActionPanel>
   );
 };
