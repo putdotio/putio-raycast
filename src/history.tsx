@@ -18,9 +18,9 @@ const HistoryList = () => {
   }, [error]);
 
   return (
-    <List isLoading={isLoading}>
+    <List isLoading={isLoading} searchBarPlaceholder="Search in history">
       {events
-        ?.filter((e) => e.type === "transfer_completed")
+        ?.filter((e) => e.type === "transfer_completed" || e.type === "file_shared")
         .map((event) => (
           <HistoryListItem key={event.id} event={event} />
         ))}

@@ -10,7 +10,6 @@ export const HistoryListItem = ({ event }: { event: IHistoryEvent }) => {
       return (
         <List.Item
           title={event.transfer_name}
-          icon={Icon.SaveDocument}
           accessories={[
             {
               text: format(event.created_at),
@@ -25,6 +24,22 @@ export const HistoryListItem = ({ event }: { event: IHistoryEvent }) => {
               <TransferListItemFileActions fileId={event.file_id} />
             </ActionPanel>
           }
+        />
+      );
+
+    case "file_shared":
+      return (
+        <List.Item
+          title={event.file_name}
+          accessories={[
+            {
+              text: format(event.created_at),
+            },
+            {
+              text: event.sharing_user_name,
+              icon: Icon.Person,
+            },
+          ]}
         />
       );
 
