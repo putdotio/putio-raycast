@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { ActionPanel, Form, Action, showToast, Toast, useNavigation } from "@raycast/api";
 import { withPutioClient } from "./api/withPutioClient";
 import { addTransfers } from "./api/transfers";
@@ -8,26 +8,6 @@ import { TransferErrorList } from "./components/TransferErrorList";
 const NewTransfer = () => {
   const [method, setMethod] = useState<string>("paste-links");
   const navigation = useNavigation();
-
-  const content = useMemo(() => {
-    switch (method) {
-      case "paste-links":
-        return (
-          <Form.TextArea
-            autoFocus
-            id="links"
-            title="Links"
-            placeholder="Paste torrent links, magnet links, direct links or links to video pages from popular video sites."
-          />
-        );
-
-      case "upload-files":
-        return <Form.FilePicker id="files" />;
-
-      default:
-        return null;
-    }
-  }, [method]);
 
   return (
     <Form
@@ -101,7 +81,16 @@ const NewTransfer = () => {
         <Form.Dropdown.Item value="upload-files" title="Upload files" />
       </Form.Dropdown>
 
-      {content}
+      {method === "paste-links" ? (
+        <Form.TextArea
+          autoFocus
+          id="links"
+          title="Links"
+          placeholder="Paste torrent links, magnet links, direct links or links to video pages from popular video sites."
+        />
+      ) : (
+        <Form.FilePicker id="files" />
+      )}
     </Form>
   );
 };
