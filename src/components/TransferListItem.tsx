@@ -26,7 +26,7 @@ export const TransferListItem = ({ transfer }: { transfer: Transfer }) => (
     icon={getProgressIcon(transfer.percent_done / 100, Color.Green)}
     actions={
       <ActionPanel title={transfer.name}>
-        {transfer.file_id && <TransferListItemFileActions fileId={transfer.file_id} />}
+        {transfer.userfile_exists && transfer.file_id && <TransferListItemFileActions fileId={transfer.file_id} />}
       </ActionPanel>
     }
   />
