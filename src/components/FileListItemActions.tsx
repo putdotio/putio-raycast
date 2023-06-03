@@ -28,7 +28,7 @@ const fetchFileURLs = async (file: IFile) => {
 
   return {
     download,
-    browser: `https://put.io/files/${file.id}`,
+    browse: `https://put.io/files/${file.id}`,
     stream: file.stream_url,
     mp4Stream: file.mp4_stream_url,
   };
@@ -43,13 +43,13 @@ export const FileListItemNavigationActions = ({ file }: { file: IFile }) => {
         <Action.Push title="Open" target={<Files id={file.id} name={file.name} />} icon={Icon.ArrowRight} />
       ) : null}
 
-      {urls?.browser && <Action.OpenInBrowser title="Open in Browser" url={urls.browser} icon="putio.png" />}
+      {urls?.browse && <Action.OpenInBrowser title="Open in Browser" url={urls.browse} icon="putio.png" />}
       {urls?.download && <Action.OpenInBrowser title="Download in Browser" url={urls.download} icon="putio.png" />}
 
-      {urls?.browser && (
+      {urls?.browse && (
         <Action.CopyToClipboard
           title="Copy URL"
-          content={urls.browser}
+          content={urls.browse}
           shortcut={{ modifiers: ["cmd", "shift"], key: "c" }}
         />
       )}

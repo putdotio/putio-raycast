@@ -13,7 +13,7 @@ type Props = {
 
 const SearchFiles = (props: Props) => {
   const [searchText, setSearchText] = useState(props.arguments.query ?? "");
-  const { isLoading, data, error } = usePromise(searchFiles, [searchText], {
+  const { isLoading, data, error, revalidate } = usePromise(searchFiles, [searchText], {
     execute: searchText !== "",
   });
 
@@ -36,7 +36,7 @@ const SearchFiles = (props: Props) => {
     >
       <List.Section title="Results" subtitle={data?.total.toString()}>
         {data?.files.map((file) => (
-          <FileListItem key={file.id} file={file} />
+          <FileListItem key={file.id} file={file} onMutate={revalidate} />
         ))}
       </List.Section>
     </List>
