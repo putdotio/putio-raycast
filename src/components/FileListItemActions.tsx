@@ -40,12 +40,24 @@ export const FileListItemNavigationActions = ({ file }: { file: IFile }) => {
       {urls?.browser && <Action.OpenInBrowser title="Open in Browser" url={urls.browser} icon="putio.png" />}
       {urls?.download && <Action.OpenInBrowser title="Download in Browser" url={urls.download} icon="putio.png" />}
 
-      <ActionPanel.Section>
-        {urls?.browser && <Action.CopyToClipboard title="Copy URL" content={urls.browser} />}
-        {urls?.download && <Action.CopyToClipboard title="Copy Download URL" content={urls.download} />}
-        {urls?.stream && <Action.CopyToClipboard title="Copy Stream URL" content={urls.stream} />}
-        {urls?.mp4Stream && <Action.CopyToClipboard title="Copy MP4 Stream URL" content={urls.mp4Stream} />}
-      </ActionPanel.Section>
+      {urls?.browser && (
+        <Action.CopyToClipboard
+          title="Copy URL"
+          content={urls.browser}
+          shortcut={{ modifiers: ["cmd", "shift"], key: "c" }}
+        />
+      )}
+
+      {urls?.download && (
+        <Action.CopyToClipboard
+          title="Copy Download URL"
+          content={urls.download}
+          shortcut={{ modifiers: ["cmd", "shift"], key: "d" }}
+        />
+      )}
+
+      {urls?.stream && <Action.CopyToClipboard title="Copy Stream URL" content={urls.stream} />}
+      {urls?.mp4Stream && <Action.CopyToClipboard title="Copy MP4 Stream URL" content={urls.mp4Stream} />}
     </>
   );
 };
@@ -56,13 +68,14 @@ export const FileListItemMutationActions = ({ file }: { file: IFile }) => {
   return (
     <>
       {file.is_shared ? null : (
-        <ActionPanel.Section title="WIP">
-          <Action title="Rename" icon={Icon.Pencil} />
+        <ActionPanel.Section>
+          <Action title="Rename" icon={Icon.Pencil} shortcut={{ modifiers: ["cmd"], key: "r" }} />
 
           <Action
             title={accountInfo.settings.trash_enabled ? "Send to Trash" : "Delete"}
             icon={accountInfo.settings.trash_enabled ? Icon.Trash : Icon.DeleteDocument}
             style={Action.Style.Destructive}
+            shortcut={{ modifiers: ["cmd"], key: "backspace" }}
           />
         </ActionPanel.Section>
       )}
