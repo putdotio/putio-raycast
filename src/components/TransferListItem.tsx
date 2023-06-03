@@ -24,7 +24,7 @@ export const TransferListItemFileActions = ({ fileId }: { fileId: IFile["id"] })
 export const TransferListItem = ({ transfer }: { transfer: Transfer }) => {
   const statusText = useMemo(() => {
     if (transfer.status === "COMPLETED") {
-      return `completed ${format(transfer.finished_at || transfer.created_at)}`;
+      return `completed ${format(`${transfer.finished_at || transfer.created_at}Z`)}`;
     }
 
     return transfer.status.toLowerCase();

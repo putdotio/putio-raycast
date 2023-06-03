@@ -12,7 +12,7 @@ export const HistoryListItem = ({ event }: { event: IHistoryEvent }) => {
           title={event.transfer_name}
           accessories={[
             {
-              text: format(event.created_at),
+              text: format(event.created_at + "Z"),
             },
             {
               text: filesize(event.transfer_size).toString(),
@@ -33,7 +33,7 @@ export const HistoryListItem = ({ event }: { event: IHistoryEvent }) => {
           title={event.file_name}
           accessories={[
             {
-              text: format(event.created_at),
+              text: format(event.created_at + "Z"),
             },
             {
               text: event.sharing_user_name,
