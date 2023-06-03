@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/putio.png" width="72">
+  <img src="https://static.put.io/avatar/putio-boncuk.png" width="72">
 </p>
 
 <h1 align="center">put.io Raycast extension</h1>
