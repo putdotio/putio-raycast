@@ -1,4 +1,4 @@
-import { ActionPanel, Action } from "@raycast/api";
+import { ActionPanel, Action, Icon } from "@raycast/api";
 import { useCachedPromise } from "@raycast/utils";
 import { IFile } from "@putdotio/api-client";
 import { Files } from "../files";
@@ -32,12 +32,18 @@ export const FileListItemActions = ({ file }: { file: IFile }) => {
   const { data: urls } = useCachedPromise(fetchFileURLs, [file]);
 
   return (
-    <ActionPanel>
-      {file.file_type === "FOLDER" ? <Action.Push title="Open" target={<Files id={file.id} />} /> : null}
+    <ActionPanel title={file.name}>
+      {file.file_type === "FOLDER" ? (
+        <Action.Push title="Open" target={<Files id={file.id} name={file.name} />} icon={Icon.ArrowRight} />
+      ) : null}
+
+      {urls?.browse && <Action.OpenInBrowser url={urls.browse} />}
+
+      {urls?.download && <Action.OpenInBrowser title="Download in Browser" url={urls.download} icon={Icon.Download} />}
       {urls?.download && <Action.CopyToClipboard title="Copy Download URL" content={urls.download} />}
+
       {urls?.stream && <Action.CopyToClipboard title="Copy Stream URL" content={urls.stream} />}
       {urls?.mp4Stream && <Action.CopyToClipboard title="Copy MP4 Stream URL" content={urls.mp4Stream} />}
-      {urls?.browse && <Action.OpenInBrowser title="Open in put.io" url={urls.browse} />}
     </ActionPanel>
   );
 };

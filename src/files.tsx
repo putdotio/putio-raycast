@@ -20,7 +20,7 @@ const fetchFiles = async (id: number) => {
   };
 };
 
-export const Files = ({ id }: { id: IFile["id"] }) => {
+export const Files = ({ id = 0, name = "Your Files" }: { id?: IFile["id"]; name?: IFile["name"] }) => {
   const { isLoading, data, error } = usePromise(fetchFiles, [id]);
 
   useEffect(() => {
@@ -33,13 +33,13 @@ export const Files = ({ id }: { id: IFile["id"] }) => {
   }, [error]);
 
   if (!data) {
-    return <List isLoading={isLoading} />;
+    return <List isLoading={isLoading} navigationTitle={name} searchBarPlaceholder={`Fetching...`} />;
   }
 
   switch (data.parent.file_type) {
     case "FOLDER":
       return (
-        <List isShowingDetail>
+        <List navigationTitle={name} searchBarPlaceholder={`Search in ${name}`}>
           {data.files.map((file) => (
             <FileListItem key={file.id} file={file} />
           ))}
@@ -52,5 +52,5 @@ export const Files = ({ id }: { id: IFile["id"] }) => {
 };
 
 export default function Command() {
-  return withPutioClient(<Files id={0} />);
+  return withPutioClient(<Files />);
 }

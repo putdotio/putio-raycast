@@ -37,7 +37,8 @@
   "dependencies": {
     "@putdotio/api-client": "^8.36.1",
     "@raycast/api": "^1.52.1",
-    "@raycast/utils": "^1.4.8"
+    "@raycast/utils": "^1.4.8",
+    "filesize": "^10.0.7"
   },
   "devDependencies": {
     "@raycast/eslint-config": "1.0.5",
