@@ -2,23 +2,9 @@ import { useEffect } from "react";
 import { List, showToast, Toast, Detail } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { IFile } from "@putdotio/api-client";
+import { withPutioClient } from "./api/withPutioClient";
+import { fetchFiles } from "./api/files";
 import { FileListItem } from "./components/FileListItem";
-import { withPutioClient, getPutioClient } from "./core/withPutioClient";
-
-const fetchFiles = async (id: number) => {
-  const response = await getPutioClient().Files.Query(id, {
-    streamUrl: true,
-    mp4StreamUrl: true,
-  });
-
-  return {
-    parent: response.data.parent,
-    files: response.data.files,
-  } as {
-    parent: IFile;
-    files: IFile[];
-  };
-};
 
 export const Files = ({ id = 0, name = "Your Files" }: { id?: IFile["id"]; name?: IFile["name"] }) => {
   const { isLoading, data, error } = usePromise(fetchFiles, [id]);

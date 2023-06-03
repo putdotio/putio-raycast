@@ -1,5 +1,5 @@
 import { List, Icon } from "@raycast/api";
-import { IFile } from "@putdotio/api-client";
+import type { IFile } from "@putdotio/api-client";
 import { filesize } from "filesize";
 import { FileListItemActions } from "./FileListItemActions";
 

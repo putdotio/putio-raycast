@@ -1,5 +1,5 @@
 import { Icon, List } from "@raycast/api";
-import { NewTransferError } from "@putdotio/api-client";
+import type { NewTransferError } from "@putdotio/api-client";
 
 type Props = {
   errors: NewTransferError[];

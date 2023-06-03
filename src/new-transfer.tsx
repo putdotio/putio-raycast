@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import { ActionPanel, Form, Action, showToast, Toast, useNavigation } from "@raycast/api";
-import { withPutioClient } from "./core/withPutioClient";
-import { useAddTransfers } from "./hooks/transfers";
+import { withPutioClient } from "./api/withPutioClient";
+import { addTransfers } from "./api/transfers";
+import { Transfers } from "./transfers";
 import { TransferErrorList } from "./components/TransferErrorList";
 
 const NewTransfer = () => {
   const [method, setMethod] = useState<string>("paste-links");
-  const addTransfers = useAddTransfers();
   const navigation = useNavigation();
 
   const content = useMemo(() => {
@@ -53,6 +53,7 @@ const NewTransfer = () => {
                       title: "View transfers",
                       onAction: (toast) => {
                         toast.hide();
+                        navigation.push(<Transfers />);
                       },
                     };
                     break;
@@ -66,13 +67,20 @@ const NewTransfer = () => {
                   case "multi-failure":
                   case "partial-success":
                     toast.title =
-                      result.type === "multi-failure" ? "Failed to add transfers" : "Some transfers failed to add";
+                      result.type === "multi-failure" ? "Failed to add transfers" : "Failed to add some transfers";
                     toast.style = Toast.Style.Failure;
                     toast.primaryAction = {
                       title: "View errors",
                       onAction: (toast) => {
                         toast.hide();
                         navigation.push(<TransferErrorList errors={result.errors} />);
+                      },
+                    };
+                    toast.secondaryAction = {
+                      title: "View transfers",
+                      onAction: (toast) => {
+                        toast.hide();
+                        navigation.push(<Transfers />);
                       },
                     };
                     break;

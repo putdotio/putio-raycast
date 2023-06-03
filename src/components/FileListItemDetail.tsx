@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { List } from "@raycast/api";
-import { IFile } from "@putdotio/api-client";
+import type { IFile } from "@putdotio/api-client";
 
 export const FileListItemDetail = ({ file }: { file: IFile }) => {
   const markdown = useMemo(() => {

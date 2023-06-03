@@ -1,5 +1,5 @@
 import { getPreferenceValues } from "@raycast/api";
-import { Detail, environment, MenuBarExtra } from "@raycast/api";
+import { Detail } from "@raycast/api";
 import { useState, useMemo } from "react";
 import PutioAPI, { IAccountInfo } from "@putdotio/api-client";
 
@@ -15,21 +15,18 @@ export const withPutioClient = (component: JSX.Element) => {
       putioClient = new PutioAPI({ clientID: 6311 });
       putioClient.setToken(token);
 
-      const accountInfoResponse = await putioClient.Account.Info();
-      accountInfo = accountInfoResponse.data.info;
-
-      forceRerender(x + 1);
+      try {
+        const accountInfoResponse = await putioClient.Account.Info();
+        accountInfo = accountInfoResponse.data.info;
+        forceRerender(x + 1);
+      } catch (error) {
+        throw new Error("Could not authenticate with put.io");
+      }
     })();
   }, []);
 
   if (!accountInfo) {
-    if (environment.commandMode === "view") {
-      return <Detail isLoading />;
-    } else if (environment.commandMode === "menu-bar") {
-      return <MenuBarExtra isLoading />;
-    }
-
-    return null;
+    return <Detail isLoading />;
   }
 
   return component;

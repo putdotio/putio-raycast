@@ -2,7 +2,7 @@ import { ActionPanel, Action, Icon } from "@raycast/api";
 import { useCachedPromise } from "@raycast/utils";
 import { IFile } from "@putdotio/api-client";
 import { Files } from "../files";
-import { getPutioAccountInfo, getPutioClient } from "../core/withPutioClient";
+import { getPutioAccountInfo, getPutioClient } from "../api/withPutioClient";
 
 const fetchFileDownloadURL = async (file: IFile) => {
   switch (file.file_type) {
@@ -38,8 +38,8 @@ export const FileListItemActions = ({ file }: { file: IFile }) => {
         <Action.Push title="Open" target={<Files id={file.id} name={file.name} />} icon={Icon.ArrowRight} />
       ) : null}
 
-      {urls?.browser && <Action.OpenInBrowser title="Open in put.io" url={urls.browser} icon="putio.png" />}
-      {urls?.download && <Action.OpenInBrowser title="Download in put.io" url={urls.download} icon="putio.png" />}
+      {urls?.browser && <Action.OpenInBrowser title="Open in Browser" url={urls.browser} icon="putio.png" />}
+      {urls?.download && <Action.OpenInBrowser title="Download in Browser" url={urls.download} icon="putio.png" />}
 
       <ActionPanel.Section>
         {urls?.browser && <Action.CopyToClipboard title="Copy URL" content={urls.browser} />}
