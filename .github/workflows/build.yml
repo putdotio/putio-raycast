@@ -1,0 +1,14 @@
+name: Build Raycast extension
+
+on:
+  - push
+
+jobs:
+  build:
+    # We use the `macos-latest` GitHub Actions runner, because Raycast's `ray` CLI only works on macOS.
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      # You don't have to specify any options here, although there are some non-mandatory options - see below!
+      - uses: timrogers/build-raycast-extension@1.0.0
+      
