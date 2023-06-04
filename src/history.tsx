@@ -1,19 +1,17 @@
 import { useEffect } from "react";
-import { Detail, List, Toast, showToast } from "@raycast/api";
+import { Detail, List, showToast } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { fetchHistoryEvents } from "./api/history";
 import { getPutioAccountInfo, withPutioClient } from "./api/withPutioClient";
 import { HistoryListItem } from "./components/HistoryListItem";
+import { localizeError, localizedErrorToToastOptions } from "./api/localizeError";
 
 const HistoryList = () => {
   const { data: events, isLoading, error } = usePromise(fetchHistoryEvents);
 
   useEffect(() => {
     if (error) {
-      showToast({
-        style: Toast.Style.Failure,
-        title: "Something went wrong",
-      });
+      showToast(localizedErrorToToastOptions(localizeError(error)));
     }
   }, [error]);
 

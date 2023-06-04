@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
-import { List, Toast, showToast } from "@raycast/api";
+import { List, showToast } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { withPutioClient } from "./api/withPutioClient";
 import { fetchTransfers } from "./api/transfers";
 import { TransferListItem } from "./components/TransferListItem";
+import { localizeError, localizedErrorToToastOptions } from "./api/localizeError";
 
 export const Transfers = () => {
   const intervalRef = useRef<NodeJS.Timeout>();
@@ -18,10 +19,7 @@ export const Transfers = () => {
 
   useEffect(() => {
     if (error) {
-      showToast({
-        style: Toast.Style.Failure,
-        title: "Something went wrong",
-      });
+      showToast(localizedErrorToToastOptions(localizeError(error)));
     }
   }, [error]);
 

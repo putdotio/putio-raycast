@@ -43,10 +43,17 @@ const genericErrorLocalizer: GenericErrorLocalizer = {
 
 export const localizeError = createLocalizeError([authErrorLocalizer, notFoundErrorLocalizer, genericErrorLocalizer]);
 
-export const mapLocalizedErrorToToastOptions = (error: LocalizedError): Toast.Options => {
+type LocalizedErrorToToastOptions = {
+  title: Toast.Options["title"];
+  message: NonNullable<Toast.Options["message"]>;
+  style: NonNullable<Toast.Options["style"]>;
+  primaryAction?: Toast.Options["primaryAction"];
+};
+
+export const localizedErrorToToastOptions = (error: LocalizedError): LocalizedErrorToToastOptions => {
   const { message, recoverySuggestion } = error;
 
-  const toastOptions: Toast.Options = {
+  const toastOptions: LocalizedErrorToToastOptions = {
     title: message,
     message: recoverySuggestion.description,
     style: Toast.Style.Failure,

@@ -1,6 +1,7 @@
 import { IFile } from "@putdotio/api-client";
 import { ActionPanel, Form, Action, useNavigation, showToast, Toast } from "@raycast/api";
 import { renameFile } from "./api/files";
+import { localizeError, localizedErrorToToastOptions } from "./api/localizeError";
 
 export const RenameFile = (props: { file: IFile; onSuccess: () => void }) => {
   const navigation = useNavigation();
@@ -26,8 +27,11 @@ export const RenameFile = (props: { file: IFile; onSuccess: () => void }) => {
                 navigation.pop();
                 props.onSuccess();
               } catch (error) {
-                toast.style = Toast.Style.Failure;
-                toast.title = "Failed to rename file";
+                const toastOptions = localizedErrorToToastOptions(localizeError(error));
+                toast.title = toastOptions.title;
+                toast.message = toastOptions.message;
+                toast.style = toastOptions.style;
+                toast.primaryAction = toastOptions.primaryAction;
               }
             }}
           />

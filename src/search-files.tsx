@@ -1,9 +1,10 @@
-import { List, Toast, showToast } from "@raycast/api";
+import { List, showToast } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { useEffect, useState } from "react";
 import { withPutioClient } from "./api/withPutioClient";
 import { searchFiles } from "./api/files";
 import { FileListItem } from "./components/FileListItem";
+import { localizeError, localizedErrorToToastOptions } from "./api/localizeError";
 
 type Props = {
   arguments: {
@@ -19,10 +20,7 @@ const SearchFiles = (props: Props) => {
 
   useEffect(() => {
     if (error) {
-      showToast({
-        style: Toast.Style.Failure,
-        title: "Something went wrong",
-      });
+      showToast(localizedErrorToToastOptions(localizeError(error)));
     }
   }, [error]);
 

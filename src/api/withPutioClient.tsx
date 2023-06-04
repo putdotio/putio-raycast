@@ -1,7 +1,8 @@
-import { getPreferenceValues } from "@raycast/api";
+import { getPreferenceValues, showToast } from "@raycast/api";
 import { Detail } from "@raycast/api";
 import { useState, useMemo } from "react";
 import PutioAPI, { IAccountInfo } from "@putdotio/api-client";
+import { localizeError, localizedErrorToToastOptions } from "./localizeError";
 
 let putioClient: PutioAPI | null = null;
 let accountInfo: IAccountInfo | null = null;
@@ -20,7 +21,7 @@ export const withPutioClient = (component: JSX.Element) => {
         accountInfo = accountInfoResponse.data.info;
         forceRerender(x + 1);
       } catch (error) {
-        throw new Error("Could not authenticate with put.io");
+        showToast(localizedErrorToToastOptions(localizeError(error)));
       }
     })();
   }, []);
