@@ -2,8 +2,7 @@ import { ActionPanel, Color, Icon, List } from "@raycast/api";
 import { useMemo } from "react";
 import { getProgressIcon, useCachedPromise } from "@raycast/utils";
 import type { IFile, Transfer } from "@putdotio/api-client";
-import { filesize } from "filesize";
-import { format } from "timeago.js";
+import { toHumanFileSize, toTimeAgo } from "@putdotio/utilities";
 import { FileListItemNavigationActions } from "./FileListItemActions";
 import { fetchFiles } from "../api/files";
 
@@ -24,7 +23,7 @@ export const TransferListItemFileActions = ({ fileId }: { fileId: IFile["id"] })
 export const TransferListItem = ({ transfer }: { transfer: Transfer }) => {
   const statusText = useMemo(() => {
     if (transfer.status === "COMPLETED") {
-      return `completed ${format(`${transfer.finished_at || transfer.created_at}Z`)}`;
+      return `completed ${toTimeAgo(transfer.finished_at || transfer.created_at)}`;
     }
 
     return transfer.status.toLowerCase();
@@ -39,7 +38,7 @@ export const TransferListItem = ({ transfer }: { transfer: Transfer }) => {
           text: statusText,
         },
         {
-          text: filesize(transfer.size).toString(),
+          text: toHumanFileSize(transfer.size),
           icon: Icon.HardDrive,
         },
       ]}

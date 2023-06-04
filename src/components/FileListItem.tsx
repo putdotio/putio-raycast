@@ -1,8 +1,8 @@
+import { useMemo } from "react";
 import { List, Icon, ActionPanel } from "@raycast/api";
 import type { IFile } from "@putdotio/api-client";
-import { filesize } from "filesize";
+import { toHumanFileSize } from "@putdotio/utilities";
 import { FileListItemNavigationActions, FileListItemMutationActions } from "./FileListItemActions";
-import { useMemo } from "react";
 
 const getIcon = (file: IFile) => {
   switch (file.file_type) {
@@ -28,7 +28,7 @@ export const FileListItem = ({ file, onMutate }: { file: IFile; onMutate: () => 
     let accessories = [
       {
         icon: Icon.HardDrive,
-        text: filesize(file.size).toString(),
+        text: toHumanFileSize(file.size),
       },
     ];
 

@@ -1,7 +1,6 @@
 import { ActionPanel, Icon, List } from "@raycast/api";
 import type { IHistoryEvent } from "@putdotio/api-client";
-import { filesize } from "filesize";
-import { format } from "timeago.js";
+import { toHumanFileSize, toTimeAgo } from "@putdotio/utilities";
 import { TransferListItemFileActions } from "./TransferListItem";
 
 export const HistoryListItem = ({ event }: { event: IHistoryEvent }) => {
@@ -12,10 +11,10 @@ export const HistoryListItem = ({ event }: { event: IHistoryEvent }) => {
           title={event.transfer_name}
           accessories={[
             {
-              text: format(event.created_at + "Z"),
+              text: toTimeAgo(event.created_at),
             },
             {
-              text: filesize(event.transfer_size).toString(),
+              text: toHumanFileSize(event.transfer_size),
               icon: Icon.HardDrive,
             },
           ]}
@@ -33,7 +32,7 @@ export const HistoryListItem = ({ event }: { event: IHistoryEvent }) => {
           title={event.file_name}
           accessories={[
             {
-              text: format(event.created_at + "Z"),
+              text: toTimeAgo(event.created_at),
             },
             {
               text: event.sharing_user_name,

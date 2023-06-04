@@ -93,10 +93,9 @@
   ],
   "dependencies": {
     "@putdotio/api-client": "^8.36.1",
+    "@putdotio/utilities": "^1.1.0",
     "@raycast/api": "^1.52.1",
-    "@raycast/utils": "^1.4.8",
-    "filesize": "^10.0.7",
-    "timeago.js": "^4.0.2"
+    "@raycast/utils": "^1.4.8"
   },
   "devDependencies": {
     "@raycast/eslint-config": "1.0.5",
