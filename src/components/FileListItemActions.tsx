@@ -63,7 +63,7 @@ export const FileListItemNavigationActions = ({ file }: { file: IFile }) => {
       )}
 
       {urls?.stream && <Action.CopyToClipboard title="Copy Stream URL" content={urls.stream} />}
-      {urls?.mp4Stream && <Action.CopyToClipboard title="Copy MP4 Stream URL" content={urls.mp4Stream} />}
+      {urls?.mp4Stream && <Action.CopyToClipboard title="Copy Mp4 Stream URL" content={urls.mp4Stream} />}
     </>
   );
 };
