@@ -17,3 +17,16 @@
     <a title="Install putio Raycast Extension" href="https://www.raycast.com/putio/putio"><img src="https://www.raycast.com/putio/putio/install_button@2x.png" height="64" alt="" style="height: 64px;"></a>
   </p>
 </div>
+
+## Docs
+
+- [Contributing](./CONTRIBUTING.md) for setup, validation, and review guidance
+- [Security](./SECURITY.md) for private vulnerability reporting
+
+## Repo Internals
+
+- [Agent guide](./AGENTS.md) for repo-specific automation guidance
+
+## Contributing
+
+Use [Contributing](./CONTRIBUTING.md) for contributor workflow and local Raycast validation.
