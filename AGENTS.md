@@ -10,9 +10,9 @@ Keep the README clean, and verify changes in Raycast when behavior moves.
 
 ## Repo Shape
 
-- Extension metadata, commands, and scripts live in [`package.json`](./package.json)
+- Extension metadata, commands, and scripts live in the [extension manifest](./package.json)
 - Source files live in `src/`
-- CI currently runs from [`.github/workflows/build.yml`](./.github/workflows/build.yml)
+- CI currently runs from the [build workflow](./.github/workflows/build.yml)
 
 ## Working Rules
 

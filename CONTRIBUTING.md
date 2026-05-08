@@ -12,7 +12,7 @@ npm install
 
 ## Working in the repo
 
-- command and metadata configuration lives in [`package.json`](./package.json)
+- command and metadata configuration lives in the [extension manifest](./package.json)
 - source files live in `src/`
 - publishing is handled through Raycast's tooling, not a custom release script in this repo
 
