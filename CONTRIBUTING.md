@@ -20,6 +20,7 @@ npm install
 
 Before opening a pull request:
 
+- CI installs dependencies with `npm ci` using the Node.js version in [`.node-version`](./.node-version)
 - run `npm run lint`
 - run `npm run build` when the change affects commands, metadata, packaging, or publish behavior
 - use `npm run dev` to smoke test the affected command in Raycast when the change affects runtime behavior
