@@ -21,7 +21,7 @@ pnpm install
 Before opening a pull request:
 
 - CI installs dependencies with `pnpm install --frozen-lockfile` using the Node.js version in [`.node-version`](./.node-version)
-- run `pnpm run lint`
+- run `pnpm run lint`; it uses Raycast's relaxed lint mode because strict Raycast lockfile validation only accepts npm lockfiles
 - run `pnpm run build` when the change affects commands, metadata, packaging, or publish behavior
 - use `pnpm run dev` to smoke test the affected command in Raycast when the change affects runtime behavior
 

@@ -30,4 +30,6 @@ pnpm run build
 pnpm run verify
 ```
 
+`pnpm run lint` uses Raycast's relaxed lint mode because the strict Raycast lockfile validator only accepts npm lockfiles. Keep `pnpm run build` in verification so command compilation and type checking still run through Raycast.
+
 When behavior changes, also smoke test the affected command with `pnpm run dev`.
