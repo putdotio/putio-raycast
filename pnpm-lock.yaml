@@ -16,10 +16,10 @@ importers:
         version: 1.17.0(@putdotio/api-client@8.49.0)
       '@raycast/api':
         specifier: ^1.104.18
-        version: 1.104.18(@types/node@22.19.17)(@types/react@19.0.10)
+        version: 1.104.18(@types/node@22.19.17)(@types/react@19.2.15)
       '@raycast/utils':
         specifier: ^2.2.5
-        version: 2.2.5(@raycast/api@1.104.18(@types/node@22.19.17)(@types/react@19.0.10))(react@19.0.0)
+        version: 2.2.5(@raycast/api@1.104.18(@types/node@22.19.17)(@types/react@19.2.15))(react@19.0.0)
     devDependencies:
       '@raycast/eslint-config':
         specifier: ^2.1.1
@@ -28,8 +28,8 @@ importers:
         specifier: 22.19.17
         version: 22.19.17
       '@types/react':
-        specifier: 19.0.10
-        version: 19.0.10
+        specifier: 19.2.15
+        version: 19.2.15
       eslint:
         specifier: ^10.4.0
         version: 10.4.0
@@ -461,8 +461,8 @@ packages:
   '@types/node@22.19.17':
     resolution: {integrity: sha512-wGdMcf+vPYM6jikpS/qhg6WiqSV/OhG+jeeHT/KlVqxYfD40iYJf9/AE1uQxVWFvU7MipKRkRv8NSHiCGgPr8Q==}
 
-  '@types/react@19.0.10':
-    resolution: {integrity: sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==}
+  '@types/react@19.2.15':
+    resolution: {integrity: sha512-eRwcGNHve+E8qtEQSSRl6urh+rFop4v8gm6O8rGv25CodbvFdLjA1vVQ1KkiFE0w0UPOnb8tDiFKL5lp0rtY5Q==}
 
   '@typescript-eslint/eslint-plugin@8.59.4':
     resolution: {integrity: sha512-PegsU+XfyJJNjd4+u/k6f9yTyp0lEXXiPopUNobZcIAUJFGICFLN+sP0Rb3JehVmiij1Ph0dFGYqODoRo/2+6A==}
@@ -1424,7 +1424,7 @@ snapshots:
       es6-error: 4.1.1
       truncate-middle: 1.0.6
 
-  '@raycast/api@1.104.18(@types/node@22.19.17)(@types/react@19.0.10)':
+  '@raycast/api@1.104.18(@types/node@22.19.17)(@types/react@19.2.15)':
     dependencies:
       '@oclif/core': 4.11.3
       '@oclif/plugin-autocomplete': 3.2.49
@@ -1434,7 +1434,7 @@ snapshots:
       react: 19.0.0
     optionalDependencies:
       '@types/node': 22.19.17
-      '@types/react': 19.0.10
+      '@types/react': 19.2.15
     transitivePeerDependencies:
       - supports-color
 
@@ -1459,9 +1459,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@raycast/utils@2.2.5(@raycast/api@1.104.18(@types/node@22.19.17)(@types/react@19.0.10))(react@19.0.0)':
+  '@raycast/utils@2.2.5(@raycast/api@1.104.18(@types/node@22.19.17)(@types/react@19.2.15))(react@19.0.0)':
     dependencies:
-      '@raycast/api': 1.104.18(@types/node@22.19.17)(@types/react@19.0.10)
+      '@raycast/api': 1.104.18(@types/node@22.19.17)(@types/react@19.2.15)
       dequal: 2.0.3
     optionalDependencies:
       react: 19.0.0
@@ -1476,7 +1476,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/react@19.0.10':
+  '@types/react@19.2.15':
     dependencies:
       csstype: 3.2.3
 
