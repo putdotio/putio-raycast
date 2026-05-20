@@ -42,30 +42,14 @@ export const FileListItemNavigationActions = ({ file }: { file: IFile }) => {
 
       {streamURL && <Action.CopyToClipboard title="Copy Stream URL" content={streamURL} />}
 
-      {mp4StreamURL && (
-        <Action.CopyToClipboard
-          // eslint-disable-next-line @raycast/prefer-title-case -- MP4 is a proper noun
-          title="Copy MP4 Stream URL"
-          content={mp4StreamURL}
-        />
-      )}
+      {mp4StreamURL && <Action.CopyToClipboard title="Copy MP4 Stream URL" content={mp4StreamURL} />}
 
       {vlc.isInstalled && streamURL && (
-        <Action
-          icon={Icon.FilmStrip}
-          onAction={() => vlc.open(streamURL)}
-          // eslint-disable-next-line @raycast/prefer-title-case -- VLC is a proper noun
-          title="Open in VLC"
-        />
+        <Action icon={Icon.FilmStrip} onAction={() => vlc.open(streamURL)} title="Open in VLC" />
       )}
 
       {vlc.isInstalled && mp4StreamURL && (
-        <Action
-          icon={Icon.FilmStrip}
-          onAction={() => vlc.open(mp4StreamURL)}
-          // eslint-disable-next-line @raycast/prefer-title-case -- VLC is a proper noun
-          title="Open MP4 in VLC"
-        />
+        <Action icon={Icon.FilmStrip} onAction={() => vlc.open(mp4StreamURL)} title="Open MP4 in VLC" />
       )}
     </>
   );
@@ -102,7 +86,7 @@ export const FileListItemMutationActions = ({ file, onMutate }: { file: IFile; o
                   toast.style = Toast.Style.Success;
                   toast.title = "Aaand it's gone!";
                   onMutate();
-                } catch (error) {
+                } catch {
                   toast.style = Toast.Style.Failure;
                   toast.title = "Failed to delete file";
                 }

@@ -8,7 +8,7 @@ import { localizeError, localizedErrorToToastOptions } from "./api/localizeError
 import { EmptyView } from "./components/EmptyView";
 
 export const Transfers = () => {
-  const intervalRef = useRef<NodeJS.Timeout>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const { isLoading, data, error, revalidate } = usePromise(fetchTransfers, [], {
     onData: () => {
@@ -35,7 +35,9 @@ export const Transfers = () => {
   return (
     <List isLoading={isLoading} searchBarPlaceholder="Search in transfers">
       <EmptyView title={data && data?.transfers.length === 0 ? "No transfers" : "Transfers"} />
-      {data?.transfers.map((transfer) => <TransferListItem key={transfer.id} transfer={transfer} />)}
+      {data?.transfers.map((transfer) => (
+        <TransferListItem key={transfer.id} transfer={transfer} />
+      ))}
     </List>
   );
 };

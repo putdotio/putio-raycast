@@ -1,6 +1,7 @@
 import { showToast } from "@raycast/api";
 import { Detail } from "@raycast/api";
 import { useState, useMemo } from "react";
+import type { ReactElement } from "react";
 import PutioAPI, { IAccountInfo } from "@putdotio/api-client";
 import { localizeError, localizedErrorToToastOptions } from "./localizeError";
 import { getAuthToken } from "../utils";
@@ -8,7 +9,7 @@ import { getAuthToken } from "../utils";
 let putioClient: PutioAPI | null = null;
 let accountInfo: IAccountInfo | null = null;
 
-export const withPutioClient = (component: JSX.Element) => {
+export const withPutioClient = (component: ReactElement) => {
   const [x, forceRerender] = useState(0);
 
   useMemo(() => {

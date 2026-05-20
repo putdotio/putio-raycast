@@ -7,7 +7,7 @@ This repository contains the standalone Raycast extension for put.io.
 Install dependencies from the repository root:
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## Working in the repo
@@ -20,10 +20,10 @@ npm install
 
 Before opening a pull request:
 
-- CI installs dependencies with `npm ci` using the Node.js version in [`.node-version`](./.node-version)
-- run `npm run lint`
-- run `npm run build` when the change affects commands, metadata, packaging, or publish behavior
-- use `npm run dev` to smoke test the affected command in Raycast when the change affects runtime behavior
+- CI installs dependencies with `pnpm install --frozen-lockfile` using the Node.js version in [`.node-version`](./.node-version)
+- run `pnpm run lint`
+- run `pnpm run build` when the change affects commands, metadata, packaging, or publish behavior
+- use `pnpm run dev` to smoke test the affected command in Raycast when the change affects runtime behavior
 
 If the change touches API behavior, auth, or result rendering, include the exact user flow you checked.
 

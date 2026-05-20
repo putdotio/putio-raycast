@@ -18,15 +18,16 @@ Keep the README clean, and verify changes in Raycast when behavior moves.
 
 - Keep [Overview](./README.md) consumer-facing
 - Keep contributor workflow and validation in [Contributing](./CONTRIBUTING.md)
-- Prefer `npm` commands from the repo root because this repo is lockfile-driven with `package-lock.json`
+- Prefer `pnpm` commands from the repo root because this repo is lockfile-driven with `pnpm-lock.yaml`
 
 ## Verification
 
 Use the existing scripts:
 
 ```bash
-npm run lint
-npm run build
+pnpm run lint
+pnpm run build
+pnpm run verify
 ```
 
-When behavior changes, also smoke test the affected command with `npm run dev`.
+When behavior changes, also smoke test the affected command with `pnpm run dev`.

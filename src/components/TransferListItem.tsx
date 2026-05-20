@@ -10,7 +10,7 @@ const fetchFile = async (fileId: IFile["id"]) => {
   try {
     const { parent } = await fetchFiles(fileId);
     return parent;
-  } catch (error) {
+  } catch {
     return null;
   }
 };
