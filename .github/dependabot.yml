@@ -22,5 +22,8 @@ updates:
         update-types: ["patch", "minor"]
       package-major:
         update-types: ["major"]
+    ignore:
+      - dependency-name: "@types/node"
+      - dependency-name: "@types/react"
     commit-message:
       prefix: "chore"
