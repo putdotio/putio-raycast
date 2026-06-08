@@ -96,7 +96,7 @@
     "@putdotio/api-client": "^8.49.0",
     "@putdotio/utilities": "^1.17.0",
     "@raycast/api": "^1.104.19",
-    "@raycast/utils": "^2.2.5"
+    "@raycast/utils": "^2.2.6"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^2.1.1",
