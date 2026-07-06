@@ -15,15 +15,15 @@ importers:
         specifier: ^1.17.0
         version: 1.17.0(@putdotio/api-client@8.49.0)
       '@raycast/api':
-        specifier: ^1.104.20
-        version: 1.104.20(@types/node@22.19.17)(@types/react@19.0.10)
+        specifier: ^1.104.21
+        version: 1.104.21(@types/node@22.19.17)(@types/react@19.0.10)
       '@raycast/utils':
         specifier: ^2.2.7
-        version: 2.2.7(@raycast/api@1.104.20(@types/node@22.19.17)(@types/react@19.0.10))(react@19.0.0)
+        version: 2.2.7(@raycast/api@1.104.21(@types/node@22.19.17)(@types/react@19.0.10))(react@19.0.0)
     devDependencies:
       '@raycast/eslint-config':
         specifier: ^2.2.0
-        version: 2.2.0(eslint@10.6.0)(prettier@3.9.1)(typescript@6.0.3)
+        version: 2.2.0(eslint@10.6.0)(prettier@3.9.4)(typescript@6.0.3)
       '@types/node':
         specifier: 22.19.17
         version: 22.19.17
@@ -34,8 +34,8 @@ importers:
         specifier: ^10.6.0
         version: 10.6.0
       prettier:
-        specifier: ^3.9.1
-        version: 3.9.1
+        specifier: ^3.9.4
+        version: 3.9.4
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -386,16 +386,16 @@ packages:
       '@types/node':
         optional: true
 
-  '@oclif/core@4.11.11':
-    resolution: {integrity: sha512-LoGzrvkH9I8dwhxuLafcf90MAp+fYfAiAhpyixaVAWaclIgs+vXeMMQwBG90/wqjdygIKcFAqNnNJrfl3s3X8Q==}
+  '@oclif/core@4.11.14':
+    resolution: {integrity: sha512-cZ5Ktd+rT0PO+o7KBH4vRFTgg+xMLf8F41WK39p8MkXEViZA/Qqe+4lzZT6102zgUxMORET1HtF9t5w8CB3tnQ==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-autocomplete@3.2.53':
     resolution: {integrity: sha512-cGAgN9ujTDxa6C84d6XNVsmoFnDFfHwdiykAnAfym3oBLxoXBNYMZhmfnZ8KBWDy/r/DYf11BrGJwqKl2P0iSA==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-help@6.2.52':
-    resolution: {integrity: sha512-qtrVz41wHDqG2rvx7xToYHVgJVBRcxE8aPSla/d5wNuHPZsDLm56Nl07pI+DNLA42Xbt9a70POl08qZgBH6FgA==}
+  '@oclif/plugin-help@6.2.53':
+    resolution: {integrity: sha512-njx2nTH87EQEEuz4ShNtL0gzzN981MRkDPqScbu+Tkd7NpIv30OHdTjQK1GzGtkf+V2RvSYIrX+LrLsUVh9DJw==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-not-found@3.2.88':
@@ -412,8 +412,8 @@ packages:
     peerDependencies:
       '@putdotio/api-client': '>=8.46.0'
 
-  '@raycast/api@1.104.20':
-    resolution: {integrity: sha512-Hcvt0OVjdjBFLtb9rNQjRBL7FAZBF3mlU17y2TgCdNolkeGixfJdMb7idfiILfgoNa94gj4C+M/MZn1tf/q4Dg==}
+  '@raycast/api@1.104.21':
+    resolution: {integrity: sha512-0s6OLx/cIgAIhZPQp3dmMCCZoWFbtgnQUTbnpTzhitwKuPVy20DpnyKJPwqsODHBLmNlhO3FgzpzkkoIrRkjjQ==}
     engines: {node: '>=22.22.2'}
     hasBin: true
     peerDependencies:
@@ -832,8 +832,8 @@ packages:
     resolution: {integrity: sha512-ej4AhfhfL2Q2zpMmLo7U1Uv9+PyhIZpgQLGT1F9miIGmiCJIoCgSmczFdrc97mWT4kVY72KA+WnnhJ5pghSvSg==}
     engines: {node: '>= 0.4'}
 
-  iconv-lite@0.7.2:
-    resolution: {integrity: sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==}
+  iconv-lite@0.7.3:
+    resolution: {integrity: sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==}
     engines: {node: '>=0.10.0'}
 
   ignore@5.3.2:
@@ -960,16 +960,16 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  picomatch@4.0.4:
-    resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
+  picomatch@4.0.5:
+    resolution: {integrity: sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==}
     engines: {node: '>=12'}
 
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.9.1:
-    resolution: {integrity: sha512-ppiDo2CSwexck1eyZUwJHg/N3nf1+6IRCv7W/VJ5vaLnVCmB7+3CdRfMwoCHBBX6xTrREDTksZ4OZl5SSf4zXA==}
+  prettier@3.9.4:
+    resolution: {integrity: sha512-yWG/o/4oJfo036EKAfK6ACAoDOfHeRHx4tuxkfBZiauURiaSmYwlpOr5LQqKtIkRD2z1PLteme2WoxEnj4tHTg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1289,7 +1289,7 @@ snapshots:
   '@inquirer/external-editor@1.0.3(@types/node@22.19.17)':
     dependencies:
       chardet: 2.2.0
-      iconv-lite: 0.7.2
+      iconv-lite: 0.7.3
     optionalDependencies:
       '@types/node': 22.19.17
 
@@ -1363,7 +1363,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.19.17
 
-  '@oclif/core@4.11.11':
+  '@oclif/core@4.11.14':
     dependencies:
       ansi-escapes: 4.3.2
       ansis: 3.17.0
@@ -1386,21 +1386,21 @@ snapshots:
 
   '@oclif/plugin-autocomplete@3.2.53':
     dependencies:
-      '@oclif/core': 4.11.11
+      '@oclif/core': 4.11.14
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       ejs: 3.1.10
     transitivePeerDependencies:
       - supports-color
 
-  '@oclif/plugin-help@6.2.52':
+  '@oclif/plugin-help@6.2.53':
     dependencies:
-      '@oclif/core': 4.11.11
+      '@oclif/core': 4.11.14
 
   '@oclif/plugin-not-found@3.2.88(@types/node@22.19.17)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@22.19.17)
-      '@oclif/core': 4.11.11
+      '@oclif/core': 4.11.14
       ansis: 3.17.0
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
@@ -1424,11 +1424,11 @@ snapshots:
       es6-error: 4.1.1
       truncate-middle: 1.0.6
 
-  '@raycast/api@1.104.20(@types/node@22.19.17)(@types/react@19.0.10)':
+  '@raycast/api@1.104.21(@types/node@22.19.17)(@types/react@19.0.10)':
     dependencies:
-      '@oclif/core': 4.11.11
+      '@oclif/core': 4.11.14
       '@oclif/plugin-autocomplete': 3.2.53
-      '@oclif/plugin-help': 6.2.52
+      '@oclif/plugin-help': 6.2.53
       '@oclif/plugin-not-found': 3.2.88(@types/node@22.19.17)
       esbuild: 0.27.7
       react: 19.0.0
@@ -1438,14 +1438,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@raycast/eslint-config@2.2.0(eslint@10.6.0)(prettier@3.9.1)(typescript@6.0.3)':
+  '@raycast/eslint-config@2.2.0(eslint@10.6.0)(prettier@3.9.4)(typescript@6.0.3)':
     dependencies:
       '@eslint/js': 9.39.4
       '@raycast/eslint-plugin': 2.2.0(eslint@10.6.0)(typescript@6.0.3)
       eslint: 10.6.0
       eslint-config-prettier: 10.1.8(eslint@10.6.0)
       globals: 17.7.0
-      prettier: 3.9.1
+      prettier: 3.9.4
       typescript: 6.0.3
       typescript-eslint: 8.62.0(eslint@10.6.0)(typescript@6.0.3)
     transitivePeerDependencies:
@@ -1459,9 +1459,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@raycast/utils@2.2.7(@raycast/api@1.104.20(@types/node@22.19.17)(@types/react@19.0.10))(react@19.0.0)':
+  '@raycast/utils@2.2.7(@raycast/api@1.104.21(@types/node@22.19.17)(@types/react@19.0.10))(react@19.0.0)':
     dependencies:
-      '@raycast/api': 1.104.20(@types/node@22.19.17)(@types/react@19.0.10)
+      '@raycast/api': 1.104.21(@types/node@22.19.17)(@types/react@19.0.10)
       dequal: 2.0.3
     optionalDependencies:
       react: 19.0.0
@@ -1836,9 +1836,9 @@ snapshots:
 
   fastest-levenshtein@1.0.16: {}
 
-  fdir@6.5.0(picomatch@4.0.4):
+  fdir@6.5.0(picomatch@4.0.5):
     optionalDependencies:
-      picomatch: 4.0.4
+      picomatch: 4.0.5
 
   file-entry-cache@8.0.0:
     dependencies:
@@ -1900,7 +1900,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  iconv-lite@0.7.2:
+  iconv-lite@0.7.3:
     dependencies:
       safer-buffer: 2.1.2
 
@@ -2000,11 +2000,11 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  picomatch@4.0.4: {}
+  picomatch@4.0.5: {}
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.9.1: {}
+  prettier@3.9.4: {}
 
   punycode@2.3.1: {}
 
@@ -2070,8 +2070,8 @@ snapshots:
 
   tinyglobby@0.2.17:
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.4)
-      picomatch: 4.0.4
+      fdir: 6.5.0(picomatch@4.0.5)
+      picomatch: 4.0.5
 
   truncate-middle@1.0.6: {}
 
