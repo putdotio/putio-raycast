@@ -95,15 +95,15 @@
   "dependencies": {
     "@putdotio/api-client": "^8.49.0",
     "@putdotio/utilities": "^1.17.0",
-    "@raycast/api": "^1.104.21",
+    "@raycast/api": "^1.104.22",
     "@raycast/utils": "^2.2.7"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^2.2.0",
     "@types/node": "22.19.17",
     "@types/react": "19.0.10",
-    "eslint": "^10.6.0",
-    "prettier": "^3.9.4",
+    "eslint": "^10.7.0",
+    "prettier": "^3.9.5",
     "typescript": "^6.0.3"
   },
   "scripts": {
