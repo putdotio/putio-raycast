@@ -1,5 +1,10 @@
 # put.io Changelog
 
+## [Maintenance] - 2026-08-20
+
+- Updated Raycast and put.io API dependencies to their latest versions
+- Modernized extension tooling and internal type safety; no functional changes
+
 ## [Refactor] - 2024-09-19
 
 - Updated file list item actions to use a new utility function that requires less network requests to get the relevant action URLs.
