@@ -8,7 +8,10 @@ Install dependencies from the repository root:
 
 ```bash
 pnpm install
+pnpm run hooks:install
 ```
+
+The checked-in pre-push hook runs the full verification gate (`pnpm run verify`) before each push.
 
 ## Working in the repo
 
@@ -22,6 +25,7 @@ Before opening a pull request:
 
 - CI installs dependencies with `pnpm install --frozen-lockfile` using the Node.js version in [`.node-version`](./.node-version)
 - run `pnpm run lint`; it uses Raycast's relaxed lint mode because strict Raycast lockfile validation only accepts npm lockfiles
+- run `pnpm run typecheck` when the change touches TypeScript sources
 - run `pnpm run build` when the change affects commands, metadata, packaging, or publish behavior
 - use `pnpm run dev` to smoke test the affected command in Raycast when the change affects runtime behavior
 
