@@ -11,7 +11,7 @@ pnpm install
 pnpm run hooks:install
 ```
 
-The checked-in pre-push hook runs the full verification gate (`pnpm verify`) before each push.
+The checked-in pre-push hook runs the full verification gate (`pnpm run verify`) before each push.
 
 ## Working in the repo
 
