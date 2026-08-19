@@ -6,13 +6,18 @@ on:
       - main
   pull_request:
 
-permissions:
-  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions: {}
 
 jobs:
   build:
     runs-on: macos-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
 
     steps:
       - name: Check out repository
