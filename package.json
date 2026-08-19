@@ -110,9 +110,11 @@
     "build": "ray build -e dist -o dist",
     "dev": "ray develop",
     "fix-lint": "ray lint --relaxed --fix",
+    "hooks:install": "git config core.hooksPath .git-hooks",
     "lint": "ray lint --relaxed",
     "publish": "pnpm dlx @raycast/api@latest publish",
-    "verify": "pnpm run lint && pnpm run build && pnpm peers check"
+    "typecheck": "tsc --noEmit",
+    "verify": "pnpm run lint && pnpm run typecheck && pnpm run build && pnpm peers check"
   },
   "version": "1.0.0",
   "engines": {

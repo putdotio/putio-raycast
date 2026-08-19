@@ -26,10 +26,13 @@ Use the existing scripts:
 
 ```bash
 pnpm run lint
+pnpm run typecheck
 pnpm run build
 pnpm run verify
 ```
 
-`pnpm run lint` uses Raycast's relaxed lint mode because the strict Raycast lockfile validator only accepts npm lockfiles. Keep `pnpm run build` in verification so command compilation and type checking still run through Raycast.
+`pnpm run lint` uses Raycast's relaxed lint mode because the strict Raycast lockfile validator only accepts npm lockfiles. `pnpm run typecheck` runs `tsc --noEmit` as an explicit gate; keep `pnpm run build` in verification so command compilation also runs through Raycast.
+
+After `pnpm install`, run `pnpm run hooks:install` once to enable the tracked pre-push hook in `.git-hooks/`, which runs `pnpm verify` before each push.
 
 When behavior changes, also smoke test the affected command with `pnpm run dev`.
