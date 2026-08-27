@@ -14,7 +14,7 @@ permissions: {}
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: blacksmith-6vcpu-macos-latest
     timeout-minutes: 10
     permissions:
       contents: read
