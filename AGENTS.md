@@ -5,7 +5,7 @@ Keep the README clean, and verify changes in Raycast when behavior moves.
 ## Start Here
 
 - [Overview](./README.md)
-- [Contributing](./CONTRIBUTING.md) — setup, hook install, validation, and PR evidence
+- [Contributing](./CONTRIBUTING.md): setup, hook install, validation, and PR evidence
 - [Security](./SECURITY.md)
 
 ## Repo Shape
