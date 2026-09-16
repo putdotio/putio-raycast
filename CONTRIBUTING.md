@@ -35,6 +35,6 @@ If the change touches API behavior, auth, or result rendering, include the exact
 
 Helpful pull requests usually include:
 
-- screenshots or recordings for changed Raycast command UI
+- screenshots or recordings for changed Raycast command UI, uploaded with `gh pr create --attach ./file.png` or `gh pr comment <n> --attach ./file.mp4` rather than committed
 - sanity checks for auth and put.io API interactions when relevant
 - rollout notes when a change requires a new publish or updated store metadata
