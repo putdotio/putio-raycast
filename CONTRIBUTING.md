@@ -11,7 +11,7 @@ pnpm install
 pnpm run hooks:install
 ```
 
-The checked-in pre-push hook runs the full verification gate (`pnpm run verify`) before each push.
+`hooks:install` points Git at the tracked `.git-hooks/`, whose pre-push hook runs `pnpm run verify` before each push.
 
 ## Working in the repo
 
@@ -21,13 +21,14 @@ The checked-in pre-push hook runs the full verification gate (`pnpm run verify`)
 
 ## Validation
 
-Before opening a pull request:
+Run `pnpm run verify` before opening a pull request; CI runs the same gate after `pnpm install --frozen-lockfile` on the Node.js version in [`.node-version`](./.node-version). It chains:
 
-- CI installs dependencies with `pnpm install --frozen-lockfile` using the Node.js version in [`.node-version`](./.node-version)
-- run `pnpm run lint`; it uses Raycast's relaxed lint mode because strict Raycast lockfile validation only accepts npm lockfiles
-- run `pnpm run typecheck` when the change touches TypeScript sources
-- run `pnpm run build` when the change affects commands, metadata, packaging, or publish behavior
-- use `pnpm run dev` to smoke test the affected command in Raycast when the change affects runtime behavior
+- `pnpm run lint`, which uses Raycast's relaxed lint mode because strict Raycast lockfile validation only accepts npm lockfiles
+- `pnpm run typecheck` (`tsc --noEmit`) as an explicit gate for TypeScript sources
+- `pnpm run build`, so command compilation also runs through Raycast
+- `pnpm peers check`
+
+Use `pnpm run dev` to smoke test the affected command in Raycast when the change affects runtime behavior.
 
 If the change touches API behavior, auth, or result rendering, include the exact user flow you checked.
 
