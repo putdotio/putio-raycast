@@ -1,28 +1,24 @@
 # Agent Guide
 
-Keep the README clean, and verify changes in Raycast when behavior moves.
+Raycast extension for put.io files, transfers, and history. Commands,
+preferences, and scripts live in the [extension manifest](./package.json);
+source lives in `src/`.
 
 ## Start Here
 
 - [Overview](./README.md)
-- [Contributing](./CONTRIBUTING.md): setup, hook install, validation, and PR evidence
+- [Contributing](./CONTRIBUTING.md): setup, hooks, validation, and PR evidence
 - [Security](./SECURITY.md)
 
-## Repo Shape
+## Rules
 
-- Extension metadata, commands, and scripts live in the [extension manifest](./package.json)
-- Source files live in `src/`
-- CI runs `pnpm run verify` from the [build workflow](./.github/workflows/build.yml)
-
-## Working Rules
-
-- Keep [Overview](./README.md) consumer-facing
-- Keep contributor workflow and validation in [Contributing](./CONTRIBUTING.md)
-- Prefer `pnpm` commands from the repo root because this repo is lockfile-driven with `pnpm-lock.yaml`
+- Keep `README.md` consumer-facing and contributor workflow in `CONTRIBUTING.md`.
+- Use `pnpm` from the repo root; `pnpm-lock.yaml` is the lockfile.
 
 ## Verification
 
-`pnpm run verify` is the gate (lint, typecheck, build, and peer check; see the
-`scripts` block in [package.json](./package.json)). Keep `pnpm run build` in
-verification so command compilation also runs through Raycast. When behavior
-changes, also smoke test the affected command with `pnpm run dev`.
+`pnpm run verify` is the gate; its chain is `scripts.verify` in
+[package.json](./package.json), and CI runs it from the
+[build workflow](./.github/workflows/build.yml). Keep `pnpm run build` in the
+chain so command compilation runs through Raycast. When behavior changes, also
+smoke test the affected command with `pnpm run dev`.
