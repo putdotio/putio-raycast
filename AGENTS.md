@@ -8,7 +8,7 @@ source lives in `src/`.
 
 - [Overview](./README.md)
 - [Contributing](./CONTRIBUTING.md): setup, hooks, validation, and PR evidence
-- [Security](./SECURITY.md)
+- [Security](https://github.com/putdotio/.github/blob/main/SECURITY.md)
 
 ## Rules
 
