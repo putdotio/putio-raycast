@@ -114,7 +114,7 @@
     "fix-lint": "ray lint --relaxed --fix",
     "hooks:install": "git config core.hooksPath .git-hooks",
     "lint": "ray lint --relaxed",
-    "publish": "pnpm dlx @raycast/api@latest publish",
+    "publish": "ray publish",
     "typecheck": "tsc --noEmit",
     "verify": "pnpm run lint && pnpm run typecheck && pnpm test && pnpm run build && pnpm peers check",
     "test": "node --test tests/*.test.cjs"
