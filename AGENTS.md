@@ -1,8 +1,9 @@
 # Agent Guide
 
-Raycast extension for put.io files, transfers, and history. Commands,
-preferences, and scripts live in the [extension manifest](./package.json);
-source lives in `src/`.
+Raycast extension for put.io files, transfers, and history, installed from the
+[Raycast Store](https://www.raycast.com/putio/putio). Commands, preferences,
+and scripts live in the [extension manifest](./package.json); source lives in
+`src/`.
 
 ## Start Here
 
@@ -21,4 +22,16 @@ source lives in `src/`.
 [package.json](./package.json), and CI runs it from the
 [build workflow](./.github/workflows/build.yml). Keep `pnpm run build` in the
 chain so command compilation runs through Raycast. When behavior changes, also
-smoke test the affected command with `pnpm run dev`.
+smoke test the affected command with `pnpm run dev`. Docs-only changes need no
+runtime proof; no gate checks Markdown, so confirm the links and commands you
+name resolve.
+
+`pnpm run dev` loads the extension into your local Raycast with the
+app-specific password from its preferences, so Delete, Rename, and Add
+Transfers act on that real put.io account.
+
+## Delivery
+
+Pull requests squash-merge to `main`, and a merge runs CI only. Users get a
+change when someone runs `pnpm run publish`, which submits the extension to the
+Raycast Store for Raycast's review; that store submission is manual.
