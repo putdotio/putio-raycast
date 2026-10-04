@@ -23,8 +23,8 @@ and scripts live in the [extension manifest](./package.json); source lives in
 [build workflow](./.github/workflows/build.yml). Keep `pnpm run build` in the
 chain so command compilation runs through Raycast. When behavior changes, also
 smoke test the affected command with `pnpm run dev`. Docs-only changes need no
-runtime proof; no gate checks Markdown, so confirm the links and commands you
-name resolve.
+runtime proof; `pnpm run markdown:check` (oxfmt, in the gate) checks formatting
+but not links, so confirm the links and commands you name resolve.
 
 `pnpm run dev` loads the extension into your local Raycast with the
 app-specific password from its preferences, so Delete, Rename, and Add
