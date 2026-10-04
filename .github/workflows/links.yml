@@ -1,0 +1,19 @@
+name: Links
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: links-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions: {}
+
+jobs:
+  links:
+    permissions:
+      contents: read
+    uses: putdotio/.github/.github/workflows/frontend-links.yml@1ee0d3b473cbc6fada08831f01ff80fe653c434a # v1.1.0
