@@ -32,6 +32,7 @@ Transfers act on that real put.io account.
 
 ## Delivery
 
-Pull requests squash-merge to `main`, and a merge runs CI only. Users get a
-change when someone runs `pnpm run publish`, which submits the extension to the
-Raycast Store for Raycast's review; that store submission is manual.
+Pull requests squash-merge to `main`, and a merge runs CI only. The manual
+store submission is `pnpm run publish`, which opens a pull request in Raycast's
+extensions repository; users get the change only after Raycast reviews and
+merges it.
