@@ -24,11 +24,13 @@ and scripts live in the [extension manifest](./package.json); source lives in
 chain so command compilation runs through Raycast. When behavior changes, also
 smoke test the affected command with `pnpm run dev`. Docs-only changes need no
 runtime proof; `pnpm run markdown:check` (oxfmt, in the gate) checks formatting
-and the [Links workflow](./.github/workflows/links.yml) checks relative links
-and anchors, so confirm the external links and commands you name resolve.
-The [Scan workflow](./.github/workflows/scan.yml) runs Gitleaks and TruffleHog
-on every pull request, Actionlint and Zizmor on pull requests that change
-`.github/`, and all four weekly.
+and the build workflow's shared
+[links action](https://github.com/putdotio/.github#actionslinks) checks
+relative links and anchors, so confirm the external links and commands you
+name resolve. Its last step, the shared
+[scan action](https://github.com/putdotio/.github#actionsscan), runs Actionlint
+and Zizmor when a push to `main` changes `.github/`, and on every manual
+dispatch; GitHub secret scanning and push protection cover secrets.
 
 `pnpm run dev` loads the extension into your local Raycast with the
 app-specific password from its preferences, so Delete, Rename, and Add
