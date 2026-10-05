@@ -95,7 +95,7 @@
   "dependencies": {
     "@putdotio/api-client": "^8.49.0",
     "@putdotio/utilities": "^1.17.0",
-    "@raycast/api": "^1.104.23",
+    "@raycast/api": "^2.6.2",
     "@raycast/utils": "^2.2.7"
   },
   "devDependencies": {
@@ -105,7 +105,7 @@
     "eslint": "^10.8.0",
     "oxfmt": "^0.70.0",
     "prettier": "^3.9.6",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "react-test-renderer": "19.0.0",
     "react": "19.0.0"
   },
