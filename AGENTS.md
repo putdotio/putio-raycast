@@ -26,6 +26,9 @@ smoke test the affected command with `pnpm run dev`. Docs-only changes need no
 runtime proof; `pnpm run markdown:check` (oxfmt, in the gate) checks formatting
 and the [Links workflow](./.github/workflows/links.yml) checks relative links
 and anchors, so confirm the external links and commands you name resolve.
+The [Scan workflow](./.github/workflows/scan.yml) runs Gitleaks and TruffleHog
+on every pull request, Actionlint and Zizmor on pull requests that change
+`.github/`, and all four weekly.
 
 `pnpm run dev` loads the extension into your local Raycast with the
 app-specific password from its preferences, so Delete, Rename, and Add
