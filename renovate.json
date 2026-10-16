@@ -1,4 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>putdotio/.github:renovate-config"]
+  "extends": ["github>putdotio/.github:renovate-config"],
+  "packageRules": [
+    {
+      "description": "@raycast/api pins these as exact peer dependencies; update them with @raycast/api, not on their own.",
+      "matchPackageNames": ["@types/node", "@types/react"],
+      "enabled": false
+    }
+  ]
 }
