@@ -2,7 +2,7 @@ import { Action, ActionPanel, Detail, Icon, openExtensionPreferences, showToast 
 import { usePromise } from "@raycast/utils";
 import { useReducer, type ReactElement } from "react";
 import PutioAPI, { IAccountInfo } from "@putdotio/api-client";
-import { localizeError, localizedErrorToToastOptions } from "./localizeError";
+import { localizeError, localizedErrorToToastOptions, toError } from "./localizeError";
 import { getAuthToken } from "../utils";
 
 type AccountSession = {
@@ -16,7 +16,9 @@ let accountSession: AccountSession | null = null;
 async function loadAccountSession(token: string): Promise<AccountSession> {
   const client = new PutioAPI({ clientID: 6311 });
   client.setToken(token);
-  const response = await client.Account.Info();
+  const response = await client.Account.Info().catch((error) => {
+    throw toError(error);
+  });
   if (!response.data.info) {
     throw new Error("Account information is missing");
   }

@@ -1,10 +1,15 @@
 import type { IFile } from "@putdotio/api-client";
 import { getPutioClient } from "./withPutioClient";
+import { toError } from "./localizeError";
 
 export const fetchFiles = async (id: number) => {
-  const response = await getPutioClient().Files.Query(id, {
-    mp4Status: true,
-  });
+  const response = await getPutioClient()
+    .Files.Query(id, {
+      mp4Status: true,
+    })
+    .catch((error) => {
+      throw toError(error);
+    });
 
   return {
     parent: response.data.parent,
@@ -16,7 +21,11 @@ export const fetchFiles = async (id: number) => {
 };
 
 export const searchFiles = async (keyword: string) => {
-  const response = await getPutioClient().Files.Search(keyword);
+  const response = await getPutioClient()
+    .Files.Search(keyword)
+    .catch((error) => {
+      throw toError(error);
+    });
   return response.data;
 };
 
