@@ -1,5 +1,6 @@
 import type { NewTransferError, NewTransferParams } from "@putdotio/api-client";
 import { getPutioClient } from "./withPutioClient";
+import { toError } from "./localizeError";
 
 type AddTransfersResult =
   | {
@@ -63,6 +64,10 @@ export const addTransfers = async (text: string): Promise<AddTransfersResult> =>
 };
 
 export const fetchTransfers = async () => {
-  const response = await getPutioClient().Transfers.Query();
+  const response = await getPutioClient()
+    .Transfers.Query()
+    .catch((error) => {
+      throw toError(error);
+    });
   return response.data;
 };

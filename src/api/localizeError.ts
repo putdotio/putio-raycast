@@ -41,7 +41,22 @@ const genericErrorLocalizer: GenericErrorLocalizer = {
   }),
 };
 
-export const localizeError = createLocalizeError([authErrorLocalizer, notFoundErrorLocalizer, genericErrorLocalizer]);
+const localizePutioError = createLocalizeError([authErrorLocalizer, notFoundErrorLocalizer, genericErrorLocalizer]);
+
+// The put.io client rejects with plain objects, and @raycast/utils hooks replace
+// any non-Error rejection with `new Error(String(error))`. Wrap the original in
+// an Error before it reaches a hook so localizeError can still read it.
+class PutioRequestError extends Error {
+  constructor(cause: unknown) {
+    super("put.io request failed", { cause });
+    this.name = "PutioRequestError";
+  }
+}
+
+export const toError = (error: unknown): Error => (error instanceof Error ? error : new PutioRequestError(error));
+
+export const localizeError = (error: unknown) =>
+  localizePutioError(error instanceof PutioRequestError ? error.cause : error);
 
 type LocalizedErrorToToastOptions = {
   title: Toast.Options["title"];
