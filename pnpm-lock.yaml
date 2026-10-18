@@ -177,7 +177,7 @@ importers:
         version: 1.104.25(@types/node@22.19.17)(@types/react@19.0.10)(supports-color@8.1.1)
       '@raycast/utils':
         specifier: ^2.2.7
-        version: 2.3.2(@raycast/api@1.104.25(@types/node@22.19.17)(@types/react@19.0.10)(supports-color@8.1.1))(react@19.3.0)
+        version: 2.3.2(@raycast/api@1.104.25(@types/node@22.19.17)(@types/react@19.0.10)(supports-color@8.1.1))(react@19.3.1)
     devDependencies:
       '@raycast/eslint-config':
         specifier: ^2.2.0
@@ -198,11 +198,11 @@ importers:
         specifier: ^3.9.6
         version: 3.9.10
       react:
-        specifier: 19.3.0
-        version: 19.3.0
+        specifier: 19.3.1
+        version: 19.3.1
       react-test-renderer:
-        specifier: 19.3.0
-        version: 19.3.0(react@19.3.0)
+        specifier: 19.3.1
+        version: 19.3.1(react@19.3.1)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1316,17 +1316,17 @@ packages:
   react-is@19.3.1:
     resolution: {integrity: sha512-RRieF6IyxQBkcK6pP8xOHprLTPW6QjRkbGdImtqNme+/hYVwCZkLQLdlZGOhUqXwkS9IEynaGvPJtv6XB/cz0Q==}
 
-  react-test-renderer@19.3.0:
-    resolution: {integrity: sha512-AUxgv+hRbqjRgx4xVwiWL6cvDDKPAva1VWLXQIMoevqQn9us//C5TX9LEnBGH47D0zvJpjwjxb1umzgOMvE8Wg==}
+  react-test-renderer@19.3.1:
+    resolution: {integrity: sha512-YcNewwmnZMd0wTb2nkb4hQ58NmX/u1hW2OJsNpen8CnV+jNkmEjYd1R6wJrOMSgb8bIF5HAJv4iL+S3PwNptOA==}
     peerDependencies:
-      react: ^19.3.0
+      react: ^19.3.1
 
   react@19.0.0:
     resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
     engines: {node: '>=0.10.0'}
 
-  react@19.3.0:
-    resolution: {integrity: sha512-E8LUcbtBWt20bbl2YoHfx4ZDBdxVTfOKtCZn9cDSJ4l6/nuoApcpIBcj47t2wZoVX8g2ZHuMHbiShgCR1T5Sog==}
+  react@19.3.1:
+    resolution: {integrity: sha512-QNhWdt7nrgVWWQG58QuGsAR3jv3Hbe4mb4vz7w2csnHavciZJgda1CPNaldF6eVxv90ud3jUXpKlHL69gO38yw==}
     engines: {node: '>=0.10.0'}
 
   safer-buffer@2.1.2:
@@ -1887,12 +1887,12 @@ snapshots:
       - supports-color
       - typescript
 
-  '@raycast/utils@2.3.2(@raycast/api@1.104.25(@types/node@22.19.17)(@types/react@19.0.10)(supports-color@8.1.1))(react@19.3.0)':
+  '@raycast/utils@2.3.2(@raycast/api@1.104.25(@types/node@22.19.17)(@types/react@19.0.10)(supports-color@8.1.1))(react@19.3.1)':
     dependencies:
       '@raycast/api': 1.104.25(@types/node@22.19.17)(@types/react@19.0.10)(supports-color@8.1.1)
       dequal: 2.0.3
     optionalDependencies:
-      react: 19.3.0
+      react: 19.3.1
 
   '@types/esrecurse@4.3.1': {}
 
@@ -2487,15 +2487,15 @@ snapshots:
 
   react-is@19.3.1: {}
 
-  react-test-renderer@19.3.0(react@19.3.0):
+  react-test-renderer@19.3.1(react@19.3.1):
     dependencies:
-      react: 19.3.0
+      react: 19.3.1
       react-is: 19.3.1
       scheduler: 0.28.0
 
   react@19.0.0: {}
 
-  react@19.3.0: {}
+  react@19.3.1: {}
 
   safer-buffer@2.1.2: {}
 
