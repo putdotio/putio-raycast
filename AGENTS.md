@@ -18,23 +18,22 @@ and scripts live in the [extension manifest](./package.json); source lives in
 
 ## Verification
 
-`pnpm run verify` is the gate; its chain is `scripts.verify` in
-[package.json](./package.json), and CI runs it from the
-[build workflow](./.github/workflows/build.yml). Keep `pnpm run build` in the
-chain so command compilation runs through Raycast. When behavior changes, also
-smoke test the affected command with `pnpm run dev`. Docs-only changes need no
-runtime proof; `pnpm run markdown:check` (oxfmt, in the gate) checks formatting
-and the build workflow's shared
-[links action](https://github.com/putdotio/.github#actionslinks) checks
-relative links and anchors, so confirm the external links and commands you
-name resolve. Its last step, the shared
-[scan action](https://github.com/putdotio/.github#actionsscan), runs Actionlint
-and Zizmor when a push to `main` changes `.github/`, and on every manual
-dispatch; GitHub secret scanning and push protection cover secrets.
-
-`pnpm run dev` loads the extension into your local Raycast with the
-app-specific password from its preferences, so Delete, Rename, and Add
-Transfers act on that real put.io account.
+- `pnpm run verify` is the gate; its chain is `scripts.verify` in
+  [package.json](./package.json), and CI runs it from the
+  [build workflow](./.github/workflows/build.yml). Keep `pnpm run build` in the
+  chain so Raycast compiles the commands.
+- When behavior changes, smoke test the affected command with `pnpm run dev`.
+  It loads the extension into your local Raycast with the app-specific password
+  from its preferences, so Delete, Rename, and Add Transfers act on that real
+  put.io account.
+- Docs-only changes need no runtime proof. `pnpm run markdown:check` (oxfmt,
+  in the gate) checks formatting, and the shared
+  [links action](https://github.com/putdotio/.github#actionslinks) checks
+  relative links and anchors; confirm external links and commands yourself.
+- The workflow's last step, the shared
+  [scan action](https://github.com/putdotio/.github#actionsscan), runs
+  Actionlint and Zizmor when a push to `main` changes `.github/`, and on every
+  manual dispatch. GitHub secret scanning and push protection cover secrets.
 
 ## Delivery
 
