@@ -12,4 +12,4 @@ API. Add one-line bullets only for risks the aid doesn't show. -->
 
 # Notes
 
-Anything reviewers should know: rollout, store publish, follow-ups.
+Store publish, follow-ups, anything else reviewers need.
