@@ -12,14 +12,12 @@ and scripts live in the [extension manifest](./package.json); source lives in
 
 ## Verification
 
-- `pnpm run verify` is the gate; the
-  [build workflow](./.github/workflows/build.yml) runs it in CI.
+- `pnpm run verify` is the gate.
 - When behavior changes, smoke test the affected command with `pnpm run dev`.
   It uses the app-specific password from your local Raycast preferences, so
   Delete, Rename, and Add Transfers act on that real put.io account.
 - Docs-only changes need no runtime proof. `pnpm run markdown:check` checks
-  formatting; CI checks relative links and anchors. Confirm external links and
-  commands yourself.
+  formatting. Confirm external links and commands yourself.
 
 ## Delivery
 
