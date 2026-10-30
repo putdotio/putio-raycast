@@ -103,7 +103,7 @@
     "@types/node": "22.19.17",
     "@types/react": "19.0.10",
     "eslint": "^10.8.0",
-    "oxfmt": "^0.74.0",
+    "oxfmt": "^0.75.0",
     "prettier": "^3.9.6",
     "typescript": "^6.0.3",
     "react-test-renderer": "19.3.1",
@@ -125,5 +125,5 @@
   "engines": {
     "node": ">=24.19.0"
   },
-  "packageManager": "pnpm@12.15.0"
+  "packageManager": "pnpm@12.16.0"
 }
