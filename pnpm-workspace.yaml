@@ -6,4 +6,4 @@ minimumReleaseAgeExclude:
   - "@putdotio/*"
 
 overrides:
-  axios: 0.32.0
+  axios: 0.34.0

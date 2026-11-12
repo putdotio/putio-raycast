@@ -163,7 +163,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  axios: 0.32.0
+  axios: 0.34.0
 
 importers:
 
@@ -865,8 +865,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@0.32.0:
-    resolution: {integrity: sha512-sGQArzERW2SI8IRkjuJ5y91Sm9QjiRq4Ay4kOLqpbBt5CeKDNq4g6nirJdyD+palK3yEDXnJiVXsesX66AjwyA==}
+  axios@0.34.0:
+    resolution: {integrity: sha512-CkOmqy7BaT4VC9+wRUmSM3LVwCkKK3UYc7koEqIHWRpOTJypwdNctaVOgnOjhHP3599Ubq2K8KqYwfC7c8NdPQ==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -1873,7 +1873,7 @@ snapshots:
 
   '@putdotio/api-client@8.49.0(debug@4.4.3(supports-color@8.1.1))':
     dependencies:
-      axios: 0.32.0(debug@4.4.3(supports-color@8.1.1))
+      axios: 0.34.0(debug@4.4.3(supports-color@8.1.1))
       event-emitter: 0.3.5
       js-base64: 2.6.3
       qs: 6.15.2
@@ -2065,7 +2065,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@0.32.0(debug@4.4.3(supports-color@8.1.1)):
+  axios@0.34.0(debug@4.4.3(supports-color@8.1.1)):
     dependencies:
       follow-redirects: 1.16.3(debug@4.4.3(supports-color@8.1.1))
       form-data: 4.0.6
