@@ -4,3 +4,6 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - "@putdotio/*"
+
+overrides:
+  axios: 0.32.0
