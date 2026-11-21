@@ -1,20 +1,23 @@
 import { ActionPanel, Action, Icon, confirmAlert, showToast, Toast, Alert } from "@raycast/api";
 import type { IFile } from "@putdotio/api-client";
-import { getPutioAccountInfo } from "../api/withPutioClient";
+import { getPutioAccountInfo, getPutioDownloadToken } from "../api/withPutioClient";
 import { Files } from "../files";
 import { RenameFile } from "../rename-file";
 import { deleteFile } from "../api/files";
-import { getAuthToken, useVLC } from "../utils";
+import { useVLC } from "../utils";
 import { FileURLProvider } from "@putdotio/utilities";
 import PutioAPIClient from "@putdotio/api-client";
 
 export const FileListItemNavigationActions = ({ file }: { file: IFile }) => {
   const vlc = useVLC();
-  const fileURLProvider = new FileURLProvider(PutioAPIClient.DEFAULT_OPTIONS.baseURL!, getAuthToken());
+  const downloadToken = getPutioDownloadToken();
+  const fileURLProvider = downloadToken
+    ? new FileURLProvider(PutioAPIClient.DEFAULT_OPTIONS.baseURL!, downloadToken)
+    : null;
   const browseURL = `https://put.io/files/${file.id}`;
-  const downloadURL = fileURLProvider.getDownloadURL(file.id);
-  const streamURL = fileURLProvider.getStreamURL(file);
-  const mp4StreamURL = fileURLProvider.getMP4StreamURL(file);
+  const downloadURL = fileURLProvider?.getDownloadURL(file.id);
+  const streamURL = fileURLProvider?.getStreamURL(file);
+  const mp4StreamURL = fileURLProvider?.getMP4StreamURL(file);
 
   return (
     <>
