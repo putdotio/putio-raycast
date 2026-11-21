@@ -16,7 +16,7 @@ let accountSession: AccountSession | null = null;
 async function loadAccountSession(token: string): Promise<AccountSession> {
   const client = new PutioAPI({ clientID: 6311 });
   client.setToken(token);
-  const response = await client.Account.Info().catch((error) => {
+  const response = await client.Account.Info({ download_token: 1 }).catch((error) => {
     throw toError(error);
   });
   if (!response.data.info) {
@@ -105,3 +105,5 @@ function getAccountSession() {
 export const getPutioClient = () => getAccountSession().client;
 
 export const getPutioAccountInfo = () => getAccountSession().accountInfo;
+
+export const getPutioDownloadToken = () => getAccountSession().accountInfo.download_token;

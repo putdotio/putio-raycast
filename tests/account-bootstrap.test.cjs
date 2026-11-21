@@ -48,9 +48,9 @@ function fixture() {
       this.token = value;
     }
     Account = {
-      Info: () => {
+      Info: (params) => {
         const request = deferred();
-        calls.push({ client: this, request });
+        calls.push({ client: this, request, params });
         return request.promise;
       },
     };
@@ -161,6 +161,19 @@ test("initial pending becomes a localized network failure with retry and prefere
     await app.succeed(1, info);
     assert.equal(app.account.info, info);
     assert.equal(app.account.client, app.calls[1].client);
+    assert.equal(app.account.client.token, "first-token");
+  } finally {
+    await app.dispose();
+  }
+});
+
+test("the session holds the account download token for media URLs", async () => {
+  const app = fixture();
+  try {
+    await app.mount();
+    assert.deepEqual(app.calls[0].params, { download_token: 1 });
+    await app.succeed(0, { username: "first", settings: {}, download_token: "media-token" });
+    assert.equal(app.auth.getPutioDownloadToken(), "media-token");
     assert.equal(app.account.client.token, "first-token");
   } finally {
     await app.dispose();
